@@ -11,18 +11,18 @@ const ManageMyFoods = () => {
     .then(res=>res.json())
     .then(food=>setFoods(food))
   },[])
-  console.log(foods[0]?.donaremail)
-  // const { user } = useContext(AuthContext);
-  // console.log(user.email)
+  const { user } = useContext(AuthContext);
+  const email = user.email
+  console.log(email)
     // const axios = useAxios()
 
     const getFoods = async ()=>{
-        const res = await fetch(`http://localhost:5000/getallfood/v1?donaremail=wwhatyou55@gmail.com`)
+        const res = await fetch(`http://localhost:5000/getallfood/v1?donaremail=${email}`)
         // const res = await axios.get('/getallfood/v1')
         return res.json();
     }
-    const {data, isLoading, isError, error} = useQuery({
-        queryKey: ['food'],
+    const {data, isLoading, isError, error, refetch} = useQuery({
+        queryKey: ['food', email],
         queryFn: getFoods,
     })
 
@@ -47,7 +47,7 @@ const ManageMyFoods = () => {
     
     return (
         <div className='mt-16 mx-auto w-[80vw] rounded-lg'>
-             <ManageDataTable data={data}></ManageDataTable>
+             <ManageDataTable data={data} refetch={refetch}></ManageDataTable>
         </div>
     );
 };
