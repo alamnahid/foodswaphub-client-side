@@ -1,7 +1,7 @@
 // import food from "../../assets/images/bannerimage.png"
 import Modal from "./Modal";
 
-const DetailsCard = ({food}) => {
+const DetailsCard = ({food, handleRequest}) => {
     return (
         <div>
             <div className="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
@@ -9,8 +9,6 @@ const DetailsCard = ({food}) => {
                 <div className="md:grid md:grid-cols-2 md:items-center md:gap-12 xl:gap-32">
                     <div className="">
                         <img className="rounded-xl w-[40vw]" src={food?.foodImage} alt="Image Description" />
-
-                        
                     </div>
 
                     <div className="mt-5 sm:mt-10 lg:mt-0">
@@ -18,18 +16,18 @@ const DetailsCard = ({food}) => {
 
                             <div className="space-y-2 md:space-y-4">
                                 <h2 className="font-bold text-3xl lg:text-4xl text-gray-800 dark:text-gray-200">
-                                    Food Name
+                                    {food?.foodName}
                                 </h2>
                                 <div className="grid sm:flex rounded-br-xl bg-[#ffb30e1a]  sm:items-center gap-y-3 gap-x-4">
-                            <img className=" w-20 h-20" src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=900&h=900&q=80" alt="Image Description" />
+                            <img className=" w-20 h-20" src={food?.donarimage} alt="Image Description" />
 
                             <div className="sm:flex sm:flex-col sm:h-full">
                                 <div>
                                     <h3 className="font-medium text-gray-800 dark:text-gray-200">
-                                        Donar: David Forren
+                                        Donar: {food?.donarname}
                                     </h3>
                                     <p className="mt-1 text-base  text-gray-700">
-                                        Pickup Location: 
+                                        Pickup Location: {food?.pickuplocation}
                                     </p>
                                 </div>
                             </div>
@@ -47,7 +45,7 @@ const DetailsCard = ({food}) => {
                                     </svg>
 
                                     <span className="text-sm sm:text-base text-gray-500">
-                                        <span className="font-bold">Food Quantity</span> 3 Person
+                                        <span className="font-bold">Food Quantity </span>{food?.foodquantity} Person
                                     </span>
                                 </li>
 
@@ -58,7 +56,7 @@ const DetailsCard = ({food}) => {
                                     </svg>
 
                                     <span className="text-sm sm:text-base text-gray-500">
-                                    Expired Date <span className="font-bold">22/1/2202-23;23</span>
+                                    Expired Date <span className="font-bold">{food?.expiredate}</span>
                                     </span>
                                 </li>
 
@@ -66,7 +64,7 @@ const DetailsCard = ({food}) => {
                                     
 
                                     
-                                        <Modal></Modal>
+                                        <Modal food={food} handleRequest={handleRequest}></Modal>
                                    
                                 </li>
                             </ul>

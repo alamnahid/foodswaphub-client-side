@@ -21,7 +21,7 @@ const router = createBrowserRouter([
       children: [
         {
             path: '/',
-            element: <PrivateRoutes><Home></Home></PrivateRoutes>
+            element: <Home></Home>
         },
         {
             path: '/signup',
@@ -37,12 +37,12 @@ const router = createBrowserRouter([
         },
         {
             path: '/fooddetails/:id',
-            element: <FoodDetails></FoodDetails>,
+            element: <PrivateRoutes><FoodDetails></FoodDetails></PrivateRoutes>,
             loader: ({params}) => fetch(`http://localhost:5000/getallfood/v1/${params.id}`)
         },
         {
             path: 'addnewfoods',
-            element: <AddNewFood></AddNewFood>
+            element: <PrivateRoutes><AddNewFood></AddNewFood></PrivateRoutes>
         },
         {
             path: '/managemyfoods',

@@ -32,7 +32,7 @@ const FeatureFood = () => {
             <div className="grid grid-cols-3 mt-16 justify-items-center gap-12">
 
             {
-                data?.map(food=><FeatureFoodCard key={food._id} food={food}></FeatureFoodCard>)
+                data?.slice(0,6).map(food=><FeatureFoodCard key={food._id} food={food}></FeatureFoodCard>)
             }
             
             </div>
