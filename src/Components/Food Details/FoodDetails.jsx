@@ -8,6 +8,9 @@ import Swal from "sweetalert2";
 
 const FoodDetails = () => {
 
+    const singleFoodData = useLoaderData();
+    console.log(singleFoodData.foodstatus)
+
     const time = moment().format('MMMM Do YYYY h:mm a')
     const { user } = useContext(AuthContext)
 
@@ -121,7 +124,11 @@ const FoodDetails = () => {
 
                                 <li className="flex space-x-3">
 
-
+                                {
+                                    singleFoodData?.foodstatus === 'delivered' ? <button type="button" className="py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-pink-500 text-white hover:bg-pink-600 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800">
+                                    Already Delivered
+                                  </button>
+                                    :
 
                                     <div>
 
@@ -304,6 +311,7 @@ const FoodDetails = () => {
                                         </div>
 
                                     </div>
+                                }
 
                                 </li>
                             </ul>

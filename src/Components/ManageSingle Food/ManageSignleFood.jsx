@@ -1,10 +1,16 @@
 import { useLoaderData } from "react-router-dom";
 import food from "../../assets/images/bannerimage.png"
 import { useQuery } from "@tanstack/react-query";
+import { useState } from "react";
+import Swal from "sweetalert2";
 
 const ManageSignleFood = () => {
     const foodData = useLoaderData();
     console.log(foodData)
+
+    const [myfood, setmyFood] = useState(foodData)
+    console.log(myfood)
+
     
 
 
@@ -13,7 +19,7 @@ const ManageSignleFood = () => {
         // const res = await axios.get('/getallfood/v1')
         return res.json();
     }
-    const {data, isLoading, isError, error} = useQuery({
+    const {data, isLoading, isError, error, refetch} = useQuery({
         queryKey: ['food'],
         queryFn: getFoods,
     })
@@ -25,6 +31,30 @@ const ManageSignleFood = () => {
         return <p>{error.message}</p>
     }
     console.log(data)
+
+    const handleConfirm = id=>{
+        fetch(`http://localhost:5000/getallfood/v1/${id}`,{
+          method: 'PATCH',
+          headers: {
+            'content-type': 'application/json'
+          },
+          body: JSON.stringify({foodstatus: 'delivered'})
+        })
+        .then(res=>res.json())
+        .then(data=>{
+          console.log(data)
+          if(data.modifiedCount > 0){
+            Swal.fire(
+                'Delivered',
+                'Your food has been Delivered.',
+                'success'
+            )
+              data.foodstatus = 'delivered'
+              refetch()
+       
+          }
+        })
+      }
 
 
     return (
@@ -92,7 +122,11 @@ const ManageSignleFood = () => {
                    
                 </li>
             </ul>
-            <button type="button" className="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Approved</button>
+            {
+                foodData.foodstatus === 'delivered' ? <button onClick={()=>handleConfirm(foodData._id)} type="button" className="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Delivered</button>
+                :
+                <button  onClick={()=>handleConfirm(foodData._id)}  type="button" className="focus:outline-none text-white bg-red-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-green-800">Pending</button>
+            }
 
             {/* <button type="button" className="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">Pending</button> */}
 
