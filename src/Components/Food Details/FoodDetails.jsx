@@ -1,10 +1,13 @@
+import { useLoaderData } from "react-router-dom";
 import DetailsCard from "./DetailsCard";
 
 
 const FoodDetails = () => {
+    const food = useLoaderData();
+    console.log(food)
     return (
         <div>
-            <DetailsCard></DetailsCard>
+            <DetailsCard food={food}></DetailsCard>
             
         </div>
     );

@@ -10,6 +10,7 @@ import ManageMyFoods from "../Components/Manage My Foods/ManageMyFoods";
 import UpdateFoodInfo from "../Components/Update Food Info/UpdateFoodInfo";
 import ManageSignleFood from "../Components/ManageSingle Food/ManageSignleFood";
 import MyFoodRequest from "../Components/My Food Request/MyFoodRequest";
+import PrivateRoutes from "./PrivateRoutes";
 
 
 const router = createBrowserRouter([
@@ -20,7 +21,7 @@ const router = createBrowserRouter([
       children: [
         {
             path: '/',
-            element: <Home></Home>
+            element: <PrivateRoutes><Home></Home></PrivateRoutes>
         },
         {
             path: '/signup',
@@ -32,11 +33,12 @@ const router = createBrowserRouter([
         },
         {
             path: '/availablefoods',
-            element: <AvailableFood></AvailableFood>
+            element: <PrivateRoutes><AvailableFood></AvailableFood></PrivateRoutes>
         },
         {
-            path: '/fooddetails',
-            element: <FoodDetails></FoodDetails>
+            path: '/fooddetails/:id',
+            element: <FoodDetails></FoodDetails>,
+            loader: ({params}) => fetch(`http://localhost:5000/getallfood/v1/${params.id}`)
         },
         {
             path: 'addnewfoods',
@@ -44,7 +46,7 @@ const router = createBrowserRouter([
         },
         {
             path: '/managemyfoods',
-            element: <ManageMyFoods></ManageMyFoods>
+            element: <PrivateRoutes><ManageMyFoods></ManageMyFoods></PrivateRoutes>
         },
         {
             path: '/updatefood',

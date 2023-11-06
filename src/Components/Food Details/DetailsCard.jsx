@@ -1,14 +1,14 @@
-import food from "../../assets/images/bannerimage.png"
+// import food from "../../assets/images/bannerimage.png"
 import Modal from "./Modal";
 
-const DetailsCard = () => {
+const DetailsCard = ({food}) => {
     return (
         <div>
             <div className="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
 
                 <div className="md:grid md:grid-cols-2 md:items-center md:gap-12 xl:gap-32">
                     <div className="">
-                        <img className="rounded-xl w-[40vw]" src={food} alt="Image Description" />
+                        <img className="rounded-xl w-[40vw]" src={food?.foodImage} alt="Image Description" />
 
                         
                     </div>

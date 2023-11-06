@@ -7,15 +7,22 @@ import useAxios from "../Hooks/useAxios";
 
 const AvailableFood = () => {
     const [foods, setFoods] = useState([])
+    const [foodExpireDate, setFoodExpireDate] = useState('')
+    const [searchFoodName, setSearchFoodName] = useState('')
+
+    console.log(searchFoodName.toLowerCase())
+
+
     const axios = useAxios()
+    // console.log(foodExpireDate)
 
     const getFoods = async ()=>{
-        const res = await fetch('http://localhost:5000/getallfood/v1')
+        const res = await fetch(`http://localhost:5000/getallfood/v1?sortField=expiredate&sortOrder=${foodExpireDate}&foodName=${searchFoodName}`)
         // const res = await axios.get('/getallfood/v1')
         return res.json();
     }
     const {data, isLoading, isError, error} = useQuery({
-        queryKey: ['food'],
+        queryKey: ['food', foodExpireDate, searchFoodName],
         queryFn: getFoods,
     })
 
@@ -33,7 +40,7 @@ const AvailableFood = () => {
         </Helmet>
 
         <div className="mt-8">
-            <AvailableFoodBanner></AvailableFoodBanner>
+            <AvailableFoodBanner setFoodExpireDate={setFoodExpireDate} setSearchFoodName={setSearchFoodName}></AvailableFoodBanner>
             
 
             <div className="mt-28 max-w-[80vw] mx-auto grid grid-cols-3  justify-items-center gap-12">

@@ -2,7 +2,7 @@ import { HiOutlineLocationMarker } from "react-icons/hi";
 import { FaRegCalendarAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
-const FeatureFoodCard = () => {
+const FeatureFoodCard = ({food}) => {
     return (
         <div>
 
@@ -12,7 +12,7 @@ const FeatureFoodCard = () => {
                     <img className=" rounded-xl" src="https://i.ibb.co/pjBfk5S/closeup-one-hand-holding-small-plant-growing-out-soil-created-with-generative-ai-762026-38191.jpg" alt="" />
 
                     <div className="h-fit absolute bottom-0 py-2 px-3 text-lg font-semibold w-full bg-[#FFB30E] rounded-b-lg text-white">
-                        <p>Food Quantity 3 Person</p>
+                        <p>Food Quantity {food?.foodquantity} Person</p>
                     </div>
 
                 </div>
@@ -40,7 +40,7 @@ const FeatureFoodCard = () => {
                                 </div>
                             </div>
 
-                            <Link className="text-white font-bold bg-[#FFB30E] hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">View Details</Link>
+                            <Link  to={`/fooddetails/${food._id}`} className="text-white font-bold bg-[#FFB30E] hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">View Details</Link>
 
 
                             </div>
