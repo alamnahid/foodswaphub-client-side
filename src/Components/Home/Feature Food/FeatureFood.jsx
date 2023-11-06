@@ -2,10 +2,12 @@ import { useState } from "react";
 import FeatureFoodCard from "./FeatureFoodCard";
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 
 const FeatureFood = () => {
     const [foods, setFoods] = useState([])
+    // const [order, setOrder] = useState('desc')
     // const axios = useAxios()
 
     const getFoods = async ()=>{
@@ -24,7 +26,7 @@ const FeatureFood = () => {
     if(isError){
         return <p>{error.message}</p>
     }
-    console.log(data)
+    console.log(typeof(parseInt(data[0].foodquantity)))
     return (
         <div className="mt-28 max-w-[80vw] mx-auto">
             <h1 className="mt-20 text-center font-bold text-4xl border-b-2 pb-3 mb-5 w-fit mx-auto rounded-lg border-[#FFB30E]">Featured Foods</h1>

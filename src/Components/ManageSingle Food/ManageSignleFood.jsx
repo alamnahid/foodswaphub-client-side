@@ -1,27 +1,57 @@
+import { useLoaderData } from "react-router-dom";
 import food from "../../assets/images/bannerimage.png"
+import { useQuery } from "@tanstack/react-query";
 
 const ManageSignleFood = () => {
+    const foodData = useLoaderData();
+    console.log(foodData)
+    
+
+
+    const getFoods = async ()=>{
+        const res = await fetch(`http://localhost:5000/foodrequestcollection/v1?foodId=${foodData._id}`)
+        // const res = await axios.get('/getallfood/v1')
+        return res.json();
+    }
+    const {data, isLoading, isError, error} = useQuery({
+        queryKey: ['food'],
+        queryFn: getFoods,
+    })
+
+    if(isLoading){
+        return <p>loading....</p>
+    }
+    if(isError){
+        return <p>{error.message}</p>
+    }
+    console.log(data)
+
+
     return (
         <div>
             <div className="max-w-[85rem] mt-16 bg-gradient-to-r from-[#faf8f8c2] to-[#f1b83b1d] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
 
-<div className="md:grid md:grid-cols-2 md:items-center md:gap-12 xl:gap-32">
+<div className="md:grid md:grid-cols-1 md:items-center md:gap-12 xl:gap-32">
     <div className="">
         <img className="rounded-xl w-[30vw]" src={food} alt="Image Description" />
 
         
     </div>
 
-    <div className="mt-5 sm:mt-10 lg:mt-0">
+    <div>
+
+
+    {
+        data.map(food=><div key={food._id} className="mt-5 sm:mt-10 lg:mt-0">
         <div className="space-y-6 sm:space-y-8">
 
             <div className="space-y-2 md:space-y-4">
                 <h2 className="font-bold text-3xl lg:text-4xl text-gray-800 dark:text-gray-200">
-                    Food Name
+                    {food?.foodname}
                 </h2>
                 <div className="grid rounded-br-xl   sm:items-center gap-y-3 gap-x-4">
             <h1 className="text-xl font-bold">Requester</h1>
-            <img className=" w-20 rounded-2xl h-20" src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=900&h=900&q=80" alt="Image Description" />
+            <img className=" w-20 rounded-2xl h-20" src={food?.userimage} alt="Image Description" />
 
             <div className="sm:flex sm:flex-col sm:h-full">
                 <div>
@@ -33,7 +63,7 @@ const ManageSignleFood = () => {
                     </svg>
 
                     <span className="text-sm sm:text-base text-gray-500 font-medium">
-                        <span className="font-bold">Name</span> Nahid Alam
+                        <span className="font-bold">Name</span> {food?.username}
                     </span>
                 </li>
 
@@ -44,7 +74,7 @@ const ManageSignleFood = () => {
                     </svg>
 
                     <span className="text-sm sm:text-base font-bold text-gray-500">
-                    Email: <span className="font-medium">22/1/2202-23;23</span>
+                    Email: <span className="font-medium">{food?.useremail}</span>
                     </span>
                 </li>
                 <li className="flex space-x-3">
@@ -54,7 +84,7 @@ const ManageSignleFood = () => {
                     </svg>
 
                     <span className="text-sm sm:text-base font-bold text-gray-500">
-                    Request Time and Date: <span className="font-medium">22/1/2202-23;23</span>
+                    Request Time and Date: <span className="font-medium">{food?.requestdatetime}</span>
                     </span>
                 </li>
 
@@ -75,6 +105,10 @@ const ManageSignleFood = () => {
 
             
         </div>
+    </div>)
+    }
+
+    
     </div>
 </div>
 </div>

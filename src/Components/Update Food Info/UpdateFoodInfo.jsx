@@ -1,15 +1,17 @@
+import axios from "axios";
 import { useLoaderData } from "react-router-dom";
+import Swal from "sweetalert2";
 
 
 const UpdateFoodInfo = () => {
     const foods = useLoaderData()
-    console.log(foods)
+    console.log(foods._id)
 
     const handleupdateFoodInfor = (e)=>{
         e.preventDefault()
         const form = e.target;
-        const foodname = e.target.foodname.value;
-        const foodimage = e.target.foodimage.value;
+        const foodName = e.target.foodname.value;
+        const foodImage = e.target.foodimage.value;
         const foodquantity = e.target.foodquantity.value;
         const pickuplocation = e.target.pickuplocation.value;
         const expiredate = e.target.expiredate.value;
@@ -19,9 +21,30 @@ const UpdateFoodInfo = () => {
         const donaremail = e.target.donaremail.value;
         const additionalnotes = e.target.additionalnotes.value;
 
-        const updateFoodInfo = {foodname, foodimage, foodquantity, pickuplocation, expiredate, foodstatus, donarname, donarimage, donaremail, additionalnotes}
+        const updateFoodInfo = {foodName, foodImage, foodquantity, pickuplocation, expiredate, foodstatus, donarname, donarimage, donaremail, additionalnotes}
 
         console.log(updateFoodInfo)
+
+        fetch(`http://localhost:5000/getallfood/v1/${foods._id}`,{
+            method: 'PUT',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(updateFoodInfo)
+        })
+        .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                
+                if (data.modifiedCount > 0) {
+                    Swal.fire({
+                        title: 'Success!',
+                        text: 'Food Updated Successfully',
+                        icon: 'success',
+                        confirmButtonText: 'OK'
+                    })
+                }
+            })
 
 
     }
@@ -47,7 +70,7 @@ const UpdateFoodInfo = () => {
               </div>
               <div className="w-full">
                   <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Food Quantity</label>
-                  <input type="text" name="foodquantity" id="brand" className="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#FFB30E] focus:border-[#FFB30E] block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Number of person eat this food" defaultValue={foods?.foodquantity} required=""/>
+                  <input type="number" name="foodquantity" id="brand" className="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#FFB30E] focus:border-[#FFB30E] block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Number of person eat this food" defaultValue={foods?.foodquantity} required=""/>
               </div>
               <div className="w-full">
                   <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Pickup Location</label>

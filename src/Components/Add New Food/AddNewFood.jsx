@@ -34,7 +34,7 @@ console.log(user)
         .then(res => res.json())
             .then(data => {
                 console.log(data);
-                form.reset();
+                // form.reset();
                 if(data.insertedId){
                     Swal.fire({
                         title: 'Success!',
@@ -67,7 +67,7 @@ console.log(user)
               </div>
               <div className="w-full">
                   <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Food Quantity</label>
-                  <input type="text" name="foodquantity" id="brand" className="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#FFB30E] focus:border-[#FFB30E] block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Number of person eat this food" required=""/>
+                  <input type="number" name="foodquantity" id="brand" className="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#FFB30E] focus:border-[#FFB30E] block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Number of person eat this food" required=""/>
               </div>
               <div className="w-full">
                   <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Pickup Location</label>

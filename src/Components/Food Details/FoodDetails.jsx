@@ -21,6 +21,7 @@ const FoodDetails = () => {
         const donarname = e.target.donarname.value;
         const username = e.target.username.value;
         const useremail = e.target.useremail.value;
+        const userimage = user?.photoURL;
         const requestdatetime = time;
         const pickuplocation = e.target.pickuplocation.value;
         const expiredate = e.target.expiredate.value;
@@ -28,7 +29,7 @@ const FoodDetails = () => {
         const additionalnotes = e.target.additionalnotes.value;
 
         const requestFoodInfo = {
-            foodname, foodimage, foodId, donaremail, donarname, username, useremail, requestdatetime, pickuplocation, expiredate, donationamount, additionalnotes
+            foodname, foodimage, foodId, donaremail, donarname, username, userimage, useremail, requestdatetime, pickuplocation, expiredate, donationamount, additionalnotes
         }
 
         console.log(requestFoodInfo)

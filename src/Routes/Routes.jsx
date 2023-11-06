@@ -54,8 +54,9 @@ const router = createBrowserRouter([
             loader: ({params}) => fetch(`http://localhost:5000/getallfood/v1/${params.id}`)
         },
         {
-            path: '/managesignlefood',
-            element: <ManageSignleFood></ManageSignleFood>
+            path: '/managesignlefood/:id',
+            element: <PrivateRoutes><ManageSignleFood></ManageSignleFood></PrivateRoutes>,
+            loader: ({params}) => fetch(`http://localhost:5000/getallfood/v1/${params.id}`)
         },
         {
             path: '/foodrequest',
