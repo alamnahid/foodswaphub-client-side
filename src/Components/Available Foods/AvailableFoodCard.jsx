@@ -2,7 +2,7 @@ import { HiOutlineLocationMarker } from "react-icons/hi";
 import { FaRegCalendarAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
-const AvailableFoodCard = () => {
+const AvailableFoodCard = ({food}) => {
     return (
         <div>
 
@@ -17,7 +17,7 @@ const AvailableFoodCard = () => {
 
 </div>
 <div className="pt-3 pb-5">
-    <h5 className="text-xl lg:text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">Food Name</h5>
+    <h5 className="text-xl lg:text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">{food?.foodName}</h5>
 
 
     <div className="flex flex-col  pr-8">
