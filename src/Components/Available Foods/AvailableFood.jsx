@@ -3,14 +3,15 @@ import AvailableFoodBanner from "./AvailableFoodBanner";
 import AvailableFoodCard from "./AvailableFoodCard";
 import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
-// import useAxios from "../Hooks/useAxios";
+import useAxios from "../Hooks/useAxios";
 
 const AvailableFood = () => {
     const [foods, setFoods] = useState([])
-    // const axios = useAxios()
+    const axios = useAxios()
 
     const getFoods = async ()=>{
         const res = await fetch('http://localhost:5000/getallfood/v1')
+        // const res = await axios.get('/getallfood/v1')
         return res.json();
     }
     const {data, isLoading, isError, error} = useQuery({

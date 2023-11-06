@@ -1,7 +1,8 @@
 import { createContext, useEffect, useState } from "react";
 import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
-import { GoogleAuthProvider  } from "firebase/auth";
+import { GoogleAuthProvider } from "firebase/auth";
 import app from "../../Firebase/firebase.confiq";
+import axios from "axios";
 
 
 
@@ -19,34 +20,52 @@ const AuthProvider = ({ children }) => {
         return createUserWithEmailAndPassword(auth, email, password);
     }
 
-    const signIn = (email, password)=>{
+    const signIn = (email, password) => {
         setLoading(true)
         return signInWithEmailAndPassword(auth, email, password);
     }
-    const handleUpdateProfile = (name, photo) =>{
+    const handleUpdateProfile = (name, photo) => {
         return updateProfile(auth.currentUser, {
             displayName: name, photoURL: photo
         })
     }
 
-    const googleSignIn = ()=>{
+    const googleSignIn = () => {
         setLoading(true)
-       return signInWithPopup(auth, provider);
+        return signInWithPopup(auth, provider);
     }
 
 
-    const logOut = ()=>{
+    const logOut = () => {
         setLoading(true)
         return signOut(auth);
     }
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, createUser => {
-            // console.log('user in the auth state changed ', createUser);
+
+            const userEmail = createUser?.email || user?.email;
+            const loggedUser = { email: userEmail };
+
             setUser(createUser)
+            console.log('current user', createUser);
             setLoading(false)
+            if (createUser) {
+                axios.post('http://localhost:5000/jwt', loggedUser, { withCredentials: true })
+                    .then(res => {
+                        console.log('token response', res.data);
+                    })
+            }
+            else {
+                axios.post('http://localhost:5000/logout', loggedUser, {
+                    withCredentials: true
+                })
+                    .then(res => {
+                        console.log(res.data);
+                    })
+            }
         })
-        return ()=> {
+        return () => {
             unsubscribe();
         }
     }, [])
@@ -61,7 +80,7 @@ const AuthProvider = ({ children }) => {
         loading,
         googleSignIn,
         handleUpdateProfile
-       
+
     }
     return (
         <AuthContext.Provider value={aouthInfo}>
