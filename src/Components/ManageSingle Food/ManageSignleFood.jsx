@@ -7,20 +7,20 @@ import Swal from "sweetalert2";
 const ManageSignleFood = () => {
     const foodData = useLoaderData();
     console.log(foodData)
+    const foodId = foodData._id;
 
-    const [myfood, setmyFood] = useState(foodData)
+    const [myfood, setmyFood] = useState([foodData])
+
     console.log(myfood)
 
     
-
-
     const getFoods = async ()=>{
-        const res = await fetch(`http://localhost:5000/foodrequestcollection/v1?foodId=${foodData._id}`)
+        const res = await fetch(`http://localhost:5000/foodrequestcollection/v1?foodId=${foodId}`)
         // const res = await axios.get('/getallfood/v1')
         return res.json();
     }
     const {data, isLoading, isError, error, refetch} = useQuery({
-        queryKey: ['food'],
+        queryKey: ['food', foodId],
         queryFn: getFoods,
     })
 
@@ -44,13 +44,17 @@ const ManageSignleFood = () => {
         .then(data=>{
           console.log(data)
           if(data.modifiedCount > 0){
+            const remaining = myfood.filter(item => item._id !== id);
+            const updated = myfood.find(item => item._id === id);
+            updated.foodstatus = 'delivered'
+            const newFoods = [updated, ...remaining];
+            setmyFood(newFoods)
+            refetch()
             Swal.fire(
                 'Delivered',
                 'Your food has been Delivered.',
                 'success'
             )
-              data.foodstatus = 'delivered'
-              refetch()
        
           }
         })
@@ -63,7 +67,7 @@ const ManageSignleFood = () => {
 
 <div className="md:grid md:grid-cols-1 md:items-center md:gap-12 xl:gap-32">
     <div className="">
-        <img className="rounded-xl w-[30vw]" src={food} alt="Image Description" />
+        <img className="rounded-xl w-[20vw]" src={food} alt="Image Description" />
 
         
     </div>

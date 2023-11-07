@@ -1,16 +1,38 @@
 import { useContext } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
 import Swal from "sweetalert2";
+import { useMutation } from "@tanstack/react-query";
+import axios from "axios";
 
 const AddNewFood = () => {
     const { user } = useContext(AuthContext);
-console.log(user)
+    console.log(user)
+
+    
+    
+    const {mutate} = useMutation({
+        mutationKey: ['food'],
+        mutationFn: (addingData)=>{
+            return axios.post('http://localhost:5000/food', addingData)
+        },
+        onSuccess: ()=>{
+            Swal.fire({
+                                title: 'Success!',
+                                text: 'Food Added Successfully',
+                                icon: 'success',
+                                confirmButtonText: 'Ok'
+                              })
+        }
+    })
+    
     const handleAddProduct = (e)=>{
         e.preventDefault()
         const form = e.target;
         const foodName = e.target.foodname.value;
         const foodImage = e.target.foodimage.value;
-        const foodquantity = e.target.foodquantity.value;
+        const foodQuantity = e.target.foodquantity.value;
+        const foodquantity = parseFloat(foodQuantity)
+
         const pickuplocation = e.target.pickuplocation.value;
         const expiredate = e.target.expiredate.value;
         const additionalnotes = e.target.additionalnotes.value;
@@ -18,32 +40,20 @@ console.log(user)
         const donarname = e.target.donarname.value;
         const donarimage = e.target.donarimage.value;
         const donaremail = e.target.donaremail.value;
+        
 
-        const newFoodInfo = {
-            foodName, foodImage, foodquantity, pickuplocation, expiredate, additionalnotes, foodstatus, donarname, donarimage, donaremail 
-        }
+        
+        mutate({foodName,
+            foodImage,
+            foodquantity,
+            pickuplocation,
+            expiredate,
+            additionalnotes,
+            foodstatus,
+            donarname,
+            donarimage,
+            donaremail})
 
-        console.log(newFoodInfo)
-        fetch('http://localhost:5000/food',{
-            method: 'POST',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(newFoodInfo)
-        })
-        .then(res => res.json())
-            .then(data => {
-                console.log(data);
-                // form.reset();
-                if(data.insertedId){
-                    Swal.fire({
-                        title: 'Success!',
-                        text: 'Food Added Successfully',
-                        icon: 'success',
-                        confirmButtonText: 'Ok'
-                      })
-                }
-            })
         
     }
 
@@ -55,6 +65,8 @@ console.log(user)
             <section className=" dark:bg-gray-900">
   <div className="py-8 px-4 mx-auto max-w-2xl lg:py-16">
       <h2 className="mb-4 text-xl font-bold text-gray-900 dark:text-white">Add a new Food</h2>
+      
+      
       <form onSubmit={handleAddProduct}>
           <div className="grid gap-4 sm:grid-cols-2 sm:gap-6">
               <div className="sm:col-span-2">
@@ -67,7 +79,7 @@ console.log(user)
               </div>
               <div className="w-full">
                   <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Food Quantity</label>
-                  <input type="number" name="foodquantity" id="brand" className="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#FFB30E] focus:border-[#FFB30E] block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Number of person eat this food" required=""/>
+                  <input type="number"  name="foodquantity" id="brand" className="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#FFB30E] focus:border-[#FFB30E] block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Number of person eat this food" required=""/>
               </div>
               <div className="w-full">
                   <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Pickup Location</label>
@@ -81,7 +93,7 @@ console.log(user)
               <div>
                   <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Food Statis</label>
                   <select id="category" name="foodstatus" disabled className="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#FFB30E] focus:border-[#FFB30E] block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                      <option selected="">available</option>
+                      <option value='available' selected="">available</option>
                       <option selected="">delivereed</option>
                       
                       
@@ -90,7 +102,7 @@ console.log(user)
 
               <div className="sm:col-span-2">
                   <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Donar Name</label>
-                  <input type="text" name="donarname" className="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#FFB30E] focus:border-[#FFB30E] block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Your Name" defaultValue={user?.displayName} required=""/>
+                  <input type="text"  name="donarname" className="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#FFB30E] focus:border-[#FFB30E] block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Your Name" defaultValue={user?.displayName} required=""/>
               </div>
 
               <div className="sm:col-span-2">
@@ -100,7 +112,7 @@ console.log(user)
 
               <div className="sm:col-span-2">
                   <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Donar Email</label>
-                  <input type="email" name="donaremail" className="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#FFB30E] focus:border-[#FFB30E] block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Your email" defaultValue={user?.email} required=""/>
+                  <input type="email"name="donaremail" className="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#FFB30E] focus:border-[#FFB30E] block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Your email" defaultValue={user?.email} required=""/>
               </div>
 
               

@@ -13,7 +13,8 @@ const UpdateFoodInfo = () => {
         const form = e.target;
         const foodName = e.target.foodname.value;
         const foodImage = e.target.foodimage.value;
-        const foodquantity = e.target.foodquantity.value;
+        const foodQuantity = e.target.foodquantity.value;
+        const foodquantity = parseFloat(foodQuantity)
         const pickuplocation = e.target.pickuplocation.value;
         const expiredate = e.target.expiredate.value;
         const foodstatus = e.target.foodstatus.value;
@@ -80,7 +81,7 @@ const UpdateFoodInfo = () => {
               </div>
               <div>
                   <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Expire Date</label>
-                  <input type="datetime-local" name="expiredate" id="price" className="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#FFB30E] focus:border-[#FFB30E] block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" defaultValue={foods?.expiredate} placeholder="Enter the Expire Date" required=""/>
+                  <input type="date" name="expiredate" id="price" className="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#FFB30E] focus:border-[#FFB30E] block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" defaultValue={foods?.expiredate} placeholder="Enter the Expire Date" required=""/>
 
               </div>
               <div>

@@ -6,7 +6,7 @@ const AvailableFoodCard = ({food}) => {
     return (
         <div>
 
-<div className="max-w-[33vw] px-8  bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+<div className="w-full lg:w-[380px] h-[500px] px-8  bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
 
 <div className="pt-4 relative">
     <img className="h-[200px] rounded-xl" src={food?.foodImage} alt="" />
@@ -30,11 +30,11 @@ const AvailableFoodCard = ({food}) => {
             <p className="text-base font-semibold mt-2 h-12 overflow-hidden text-gray-500 dark:text-white">{food?.additionalnotes}</p>
 
 
-            <div className="flex justify-between items-center">
+            <div className="flex flex-wrap w-[300px] justify-between items-center">
 
             <div className="flex my-5 items-center space-x-4 mr-3">
                 <img className="w-10 h-10 rounded-full" src={food?.donarimage} alt="" />
-                <div className="font-medium dark:text-white">
+                <div className="font-medium dark:text-white text-xs">
                     <div>{food?.donarname}</div>
                     
                 </div>

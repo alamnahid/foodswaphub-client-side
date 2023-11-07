@@ -1,14 +1,16 @@
 import {Helmet} from "react-helmet";
 import AvailableFoodBanner from "./AvailableFoodBanner";
 import AvailableFoodCard from "./AvailableFoodCard";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import useAxios from "../Hooks/useAxios";
+import Spinner from "../Spinner/Spinner";
 
 const AvailableFood = () => {
     const [foods, setFoods] = useState([])
     const [foodExpireDate, setFoodExpireDate] = useState('')
-    const [searchFoodName, setSearchFoodName] = useState('')
+    const [searchFoodName, setSearchFoodName] = useState('') 
+    
 
     console.log(searchFoodName.toLowerCase())
 
@@ -27,7 +29,7 @@ const AvailableFood = () => {
     })
 
     if(isLoading){
-        return <p>loading....</p>
+        return <Spinner></Spinner>
     }
     if(isError){
         return <p>{error.message}</p>
@@ -40,7 +42,9 @@ const AvailableFood = () => {
         </Helmet>
 
         <div className="mt-8">
-            <AvailableFoodBanner setFoodExpireDate={setFoodExpireDate} setSearchFoodName={setSearchFoodName}></AvailableFoodBanner>
+            <AvailableFoodBanner setFoodExpireDate={setFoodExpireDate}
+             setSearchFoodName={setSearchFoodName}
+             ></AvailableFoodBanner>
             
 
             <div className="mt-28 max-w-[80vw] mx-auto grid grid-cols-3  justify-items-center gap-12">

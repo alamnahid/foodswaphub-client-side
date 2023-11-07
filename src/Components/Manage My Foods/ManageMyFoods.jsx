@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { useTable } from 'react-table';
 import ManageDataTable from './ManageDataTable';
 import { useQuery } from '@tanstack/react-query';
 import { AuthContext } from '../Provider/AuthProvider';
+import Spinner from '../Spinner/Spinner';
 
 const ManageMyFoods = () => {
   const [foods, setFoods] = useState([])
@@ -27,27 +27,23 @@ const ManageMyFoods = () => {
     })
 
     if(isLoading){
-        return <p>loading....</p>
+        return <Spinner></Spinner>
     }
     if(isError){
         return <p>{error.message}</p>
     }
-    console.log(data)
-
-    // const [data, setData] = useState([]);
-    // useEffect(() => {
-    //     // Replace 'apiUrl' with the actual API URL from which you want to fetch data.
-    //     fetch('MOCK_DATA.json')
-    //       .then((response) => response.json())
-    //       .then((data) => {
-    //         setData(data);
-    //       });
-    //   }, []);
-    //   console.log(data)
+    console.log(data.length)
     
     return (
         <div className='mt-16 mx-auto w-[80vw] rounded-lg'>
+            {
+                data.length===0 ? <div className='flex w-[80vw] h-[50vh] justify-center items-center'>
+                    <h1 className='text-4xl font-bold'>You haven't added any food yet</h1>
+                </div>
+                :
+
              <ManageDataTable data={data} refetch={refetch}></ManageDataTable>
+            }
         </div>
     );
 };

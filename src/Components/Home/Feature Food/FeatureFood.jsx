@@ -1,18 +1,13 @@
-import { useState } from "react";
 import FeatureFoodCard from "./FeatureFoodCard";
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router-dom";
-import axios from "axios";
+import Spinner from "../../Spinner/Spinner";
 
 
 const FeatureFood = () => {
-    const [foods, setFoods] = useState([])
-    // const [order, setOrder] = useState('desc')
-    // const axios = useAxios()
 
     const getFoods = async ()=>{
         const res = await fetch(`http://localhost:5000/getallfood/v1?sortField=foodquantity&sortOrder=desc`)
-        // const res = await axios.get('/getallfood/v1')
         return res.json();
     }
     const {data, isLoading, isError, error} = useQuery({
@@ -21,7 +16,7 @@ const FeatureFood = () => {
     })
 
     if(isLoading){
-        return <p>loading....</p>
+        return <Spinner></Spinner>
     }
     if(isError){
         return <p>{error.message}</p>
@@ -30,7 +25,7 @@ const FeatureFood = () => {
         <div className="mt-28 max-w-[80vw] mx-auto">
             <h1 className="mt-20 text-center font-bold text-4xl border-b-2 pb-3 mb-5 w-fit mx-auto rounded-lg border-[#FFB30E]">Featured Foods</h1>
 
-            <div className="grid grid-cols-3 mt-16 justify-items-center gap-12">
+            <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 mt-16 justify-items-center gap-12">
 
             {
                 data?.slice(0,6).map(food=><FeatureFoodCard key={food._id} food={food}></FeatureFoodCard>)

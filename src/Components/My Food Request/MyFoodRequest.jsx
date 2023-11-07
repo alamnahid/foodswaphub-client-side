@@ -2,6 +2,7 @@ import { useContext } from "react";
 import MyFoodRequestCard from "./MyFoodRequestCard";
 import { AuthContext } from "../Provider/AuthProvider";
 import { useQuery } from "@tanstack/react-query";
+import Spinner from "../Spinner/Spinner";
 
 
 const MyFoodRequest = () => {
@@ -20,7 +21,7 @@ const MyFoodRequest = () => {
     })
 
     if(isLoading){
-        return <p>loading....</p>
+        return <Spinner></Spinner>
     }
     if(isError){
         return <p>{error.message}</p>
