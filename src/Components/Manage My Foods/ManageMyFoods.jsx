@@ -1,8 +1,9 @@
-import React, { useState, useEffect, useContext } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import ManageDataTable from './ManageDataTable';
 import { useQuery } from '@tanstack/react-query';
 import { AuthContext } from '../Provider/AuthProvider';
 import Spinner from '../Spinner/Spinner';
+import { Helmet } from 'react-helmet-async';
 
 const ManageMyFoods = () => {
   const [foods, setFoods] = useState([])
@@ -36,6 +37,9 @@ const ManageMyFoods = () => {
     
     return (
         <div className='mt-16 mx-auto w-[80vw] rounded-lg'>
+            <Helmet>
+                <title>Share2Savor | Manage Foods</title>
+            </Helmet>
             {
                 data.length===0 ? <div className='flex w-[80vw] h-[50vh] justify-center items-center'>
                     <h1 className='text-4xl font-bold'>You haven't added any food yet</h1>

@@ -3,6 +3,7 @@ import MyFoodRequestCard from "./MyFoodRequestCard";
 import { AuthContext } from "../Provider/AuthProvider";
 import { useQuery } from "@tanstack/react-query";
 import Spinner from "../Spinner/Spinner";
+import { Helmet } from "react-helmet-async";
 
 
 const MyFoodRequest = () => {
@@ -32,6 +33,9 @@ const MyFoodRequest = () => {
 
     return (
        <div className="max-w-[80vw] mx-auto mt-16">
+        <Helmet>
+                <title>Share2Savor | Food Request</title>
+            </Helmet>
          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {
                 data?.map(food=> <MyFoodRequestCard key={food._id} food={food} refetch={refetch}></MyFoodRequestCard>)

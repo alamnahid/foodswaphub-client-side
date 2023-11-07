@@ -3,6 +3,7 @@ import { AuthContext } from "../Provider/AuthProvider";
 import Swal from "sweetalert2";
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
+import { Helmet } from "react-helmet-async";
 
 const AddNewFood = () => {
     const { user } = useContext(AuthContext);
@@ -60,7 +61,9 @@ const AddNewFood = () => {
 
     return (
         <div className="bg-gradient-to-r from-[#faf8f8c2] to-[#f1b83b1d] mt-8">
-
+            <Helmet>
+                <title>Share2Savor | Add Foods</title>
+            </Helmet>
             <div>
             <section className=" dark:bg-gray-900">
   <div className="py-8 px-4 mx-auto max-w-2xl lg:py-16">

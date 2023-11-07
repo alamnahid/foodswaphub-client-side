@@ -1,10 +1,11 @@
-import {Helmet} from "react-helmet";
+
 import AvailableFoodBanner from "./AvailableFoodBanner";
 import AvailableFoodCard from "./AvailableFoodCard";
 import { useRef, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import useAxios from "../Hooks/useAxios";
 import Spinner from "../Spinner/Spinner";
+import { Helmet } from "react-helmet-async";
 
 const AvailableFood = () => {
     const [foods, setFoods] = useState([])
@@ -38,8 +39,8 @@ const AvailableFood = () => {
     return (
         <div>
             <Helmet>
-          <title>Available Food</title>
-        </Helmet>
+                <title>Share2Savor | All Foods</title>
+            </Helmet>
 
         <div className="mt-8">
             <AvailableFoodBanner setFoodExpireDate={setFoodExpireDate}

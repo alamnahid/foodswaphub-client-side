@@ -1,4 +1,5 @@
 import axios from "axios";
+import { Helmet } from "react-helmet-async";
 import { useLoaderData, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
@@ -56,7 +57,9 @@ const UpdateFoodInfo = () => {
 
     return (
         <div className="bg-gradient-to-r from-[#faf8f8c2] to-[#f1b83b1d] mt-8">
-
+            <Helmet>
+                <title>Share2Savor | update food</title>
+            </Helmet>
             <div>
             <section className=" dark:bg-gray-900">
   <div className="py-8 px-4 mx-auto max-w-2xl lg:py-16">

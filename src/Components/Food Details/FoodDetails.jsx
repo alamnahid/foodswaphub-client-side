@@ -3,6 +3,7 @@ import moment from "moment";
 import { useContext } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 
 const FoodDetails = () => {
@@ -66,6 +67,9 @@ const FoodDetails = () => {
     console.log(food)
     return (
         <div>
+            <Helmet>
+                <title>Share2Savor | Food Details</title>
+            </Helmet>
             <div className="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
 
                 <div className="md:grid md:grid-cols-2 md:items-center md:gap-12 xl:gap-32">
