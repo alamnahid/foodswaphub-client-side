@@ -11,13 +11,14 @@ import UpdateFoodInfo from "../Components/Update Food Info/UpdateFoodInfo";
 import ManageSignleFood from "../Components/ManageSingle Food/ManageSignleFood";
 import MyFoodRequest from "../Components/My Food Request/MyFoodRequest";
 import PrivateRoutes from "./PrivateRoutes";
+import ErrorElement from "../Components/Error Page/ErrorElement";
 
 
 const router = createBrowserRouter([
     {
       path: "/",
       element: <Root></Root>,
-
+        errorElement: <ErrorElement></ErrorElement>,
       children: [
         {
             path: '/',
@@ -33,7 +34,7 @@ const router = createBrowserRouter([
         },
         {
             path: '/availablefoods',
-            element: <PrivateRoutes><AvailableFood></AvailableFood></PrivateRoutes>
+            element: <AvailableFood></AvailableFood>
         },
         {
             path: '/fooddetails/:id',
@@ -60,7 +61,7 @@ const router = createBrowserRouter([
         },
         {
             path: '/foodrequest',
-            element: <MyFoodRequest></MyFoodRequest>
+            element: <PrivateRoutes><MyFoodRequest></MyFoodRequest></PrivateRoutes>
         }
       ]
     },

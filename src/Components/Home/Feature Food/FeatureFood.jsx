@@ -26,7 +26,6 @@ const FeatureFood = () => {
     if(isError){
         return <p>{error.message}</p>
     }
-    console.log(typeof(parseInt(data[0].foodquantity)))
     return (
         <div className="mt-28 max-w-[80vw] mx-auto">
             <h1 className="mt-20 text-center font-bold text-4xl border-b-2 pb-3 mb-5 w-fit mx-auto rounded-lg border-[#FFB30E]">Featured Foods</h1>

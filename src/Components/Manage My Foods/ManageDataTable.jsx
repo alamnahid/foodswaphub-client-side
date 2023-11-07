@@ -37,7 +37,7 @@ const ManageDataTable = ({data, refetch}) => {
             Header: 'Update',
             accessor: 'update',
             Cell: ({ row }) => (
-                <Link  to={`/updatefood/${row.original._id}`}><button onClick={() => handleUpdate(row.original._id)} type="button" className="text-gray-900 bg-gradient-to-r from-teal-200 to-lime-200 hover:bg-gradient-to-l hover:from-teal-200 hover:to-lime-200 focus:ring-4 focus:outline-none focus:ring-lime-200 dark:focus:ring-teal-700 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Edit</button></Link>
+                <Link  to={`/updatefood/${row.original._id}`}><button type="button" className="text-gray-900 bg-gradient-to-r from-teal-200 to-lime-200 hover:bg-gradient-to-l hover:from-teal-200 hover:to-lime-200 focus:ring-4 focus:outline-none focus:ring-lime-200 dark:focus:ring-teal-700 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Edit</button></Link>
 
             ),
           },
@@ -94,14 +94,6 @@ const ManageDataTable = ({data, refetch}) => {
             }
           })
         }
-    
-      const handleUpdate = (id) => {
-        console.log(id)
-      };
-    
-      const handleManage = (id) => {
-        // Implement your manage logic here
-      };
     return (
         <div>
             <table {...getTableProps()}>

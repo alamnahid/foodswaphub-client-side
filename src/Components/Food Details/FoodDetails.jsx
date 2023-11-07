@@ -11,7 +11,7 @@ const FoodDetails = () => {
     const singleFoodData = useLoaderData();
     console.log(singleFoodData.foodstatus)
 
-    const time = moment().format('MMMM Do YYYY h:mm a')
+    const time = moment().format('L'); 
     const { user } = useContext(AuthContext)
 
     const handleRequest = (e) => {
@@ -30,9 +30,10 @@ const FoodDetails = () => {
         const expiredate = e.target.expiredate.value;
         const donationamount = e.target.expiredate.value;
         const additionalnotes = e.target.additionalnotes.value;
+        const foodstatus = singleFoodData.foodstatus;
 
         const requestFoodInfo = {
-            foodname, foodimage, foodId, donaremail, donarname, username, userimage, useremail, requestdatetime, pickuplocation, expiredate, donationamount, additionalnotes
+            foodname, foodimage, foodId, donaremail, foodstatus, donarname, username, userimage, useremail, requestdatetime, pickuplocation, expiredate, donationamount, additionalnotes
         }
 
         console.log(requestFoodInfo)
@@ -254,7 +255,7 @@ const FoodDetails = () => {
                                                                                         Expired Date
                                                                                     </label>
 
-                                                                                    <input type="datetime-local" name="expiredate" className="py-2 px-3 pr-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400" placeholder="Enter expire date" defaultValue={food?.expiredate} readOnly />
+                                                                                    <input type="date" name="expiredate" className="py-2 px-3 pr-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400" placeholder="Enter expire date" defaultValue={food?.expiredate} readOnly />
                                                                                 </div>
 
 

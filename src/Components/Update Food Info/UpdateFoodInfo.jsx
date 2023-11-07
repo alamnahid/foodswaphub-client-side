@@ -1,11 +1,12 @@
 import axios from "axios";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
 
 const UpdateFoodInfo = () => {
     const foods = useLoaderData()
     console.log(foods._id)
+    const navigate = useNavigate();
 
     const handleupdateFoodInfor = (e)=>{
         e.preventDefault()
@@ -43,6 +44,7 @@ const UpdateFoodInfo = () => {
                         icon: 'success',
                         confirmButtonText: 'OK'
                     })
+                    navigate('/managemyfoods')
                 }
             })
 
