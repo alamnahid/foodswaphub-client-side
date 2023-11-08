@@ -1,4 +1,4 @@
-import axios from "axios";
+
 import { Helmet } from "react-helmet-async";
 import { useLoaderData, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
@@ -6,7 +6,7 @@ import Swal from "sweetalert2";
 
 const UpdateFoodInfo = () => {
     const foods = useLoaderData()
-    console.log(foods._id)
+    // console.log(foods._id)
     const navigate = useNavigate();
 
     const handleupdateFoodInfor = (e)=>{
@@ -26,18 +26,19 @@ const UpdateFoodInfo = () => {
 
         const updateFoodInfo = {foodName, foodImage, foodquantity, pickuplocation, expiredate, foodstatus, donarname, donarimage, donaremail, additionalnotes}
 
-        console.log(updateFoodInfo)
+        // console.log(updateFoodInfo)
 
-        fetch(`http://localhost:5000/getallfood/v1/${foods._id}`,{
+        fetch(`https://b8a11-server-side-jannat-jui.vercel.app/getallfood/v1/${foods._id}`,{
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
             },
-            body: JSON.stringify(updateFoodInfo)
+            body: JSON.stringify(updateFoodInfo),
+            credentials:'include'
         })
         .then(res => res.json())
             .then(data => {
-                console.log(data);
+                // console.log(data);
                 
                 if (data.modifiedCount > 0) {
                     Swal.fire({

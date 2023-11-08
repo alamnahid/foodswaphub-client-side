@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import axios from 'axios';
 const ManageDataTable = ({data, refetch}) => {
-    console.log(data)
+    // console.log(data)
     const [products, setProducts] = useState(data)
     const columns = React.useMemo(
         () => [
@@ -79,10 +79,10 @@ const ManageDataTable = ({data, refetch}) => {
             confirmButtonText: 'Yes, delete it!'
           }).then((result) => {
             if (result.isConfirmed) {
-                axios.delete(`http://localhost:5000/getallfood/v1/${id}`)
+                axios.delete(`https://b8a11-server-side-jannat-jui.vercel.app/getallfood/v1/${id}`, {withCredentials: true})
                 // .then(res=>res.json())
                 .then(data => {
-                    console.log(data.data);
+                    // console.log(data.data);
                     if (data.data.deletedCount > 0) {
                         Swal.fire(
                             'Deleted!',

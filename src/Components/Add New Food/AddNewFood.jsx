@@ -7,14 +7,14 @@ import { Helmet } from "react-helmet-async";
 
 const AddNewFood = () => {
     const { user } = useContext(AuthContext);
-    console.log(user)
+    // console.log(user)
 
     
     
     const {mutate} = useMutation({
         mutationKey: ['food'],
         mutationFn: (addingData)=>{
-            return axios.post('http://localhost:5000/food', addingData)
+            return axios.post('https://b8a11-server-side-jannat-jui.vercel.app/food', addingData, { withCredentials: true, })
         },
         onSuccess: ()=>{
             Swal.fire({

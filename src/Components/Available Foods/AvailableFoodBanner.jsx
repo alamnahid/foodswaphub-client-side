@@ -57,8 +57,8 @@ const AvailableFoodBanner = ({setFoodExpireDate, setSearchFoodName}) => {
 
                         <select onChange={(e)=>setFoodExpireDate(e.target.value)} className="py-3 px-4 pr-9 block w-full border-gray-200 rounded-full text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400">
                             <option disabled selected>Open this select menu</option>
-                            <option value="asc">Sort ASC</option>
-                            <option value="desc">Sort Desc</option>
+                            <option value="asc">Show the foods that will expire soon (ASC)</option>
+                            <option value="desc">Show foods that have a late expiration date (Desc)</option>
                             
                         </select>
                     </div>

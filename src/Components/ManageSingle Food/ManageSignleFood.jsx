@@ -9,17 +9,17 @@ import Lottie from "lottie-react";
 
 const ManageSignleFood = () => {
     const foodData = useLoaderData();
-    console.log(foodData)
+    // console.log(foodData)
     const foodId = foodData._id;
 
     const [myfood, setmyFood] = useState([foodData])
     
 
-    console.log(myfood)
+    // console.log(myfood)
 
     
     const getFoods = async ()=>{
-        const res = await fetch(`http://localhost:5000/foodrequestcollection/v1?foodId=${foodId}`)
+        const res = await fetch(`https://b8a11-server-side-jannat-jui.vercel.app/foodrequestcollection/v1?foodId=${foodId}`, {credentials:'include'})
         // const res = await axios.get('/getallfood/v1')
         return res.json();
     }
@@ -34,13 +34,13 @@ const ManageSignleFood = () => {
     if(isError){
         return <p>{error.message}</p>
     }
-    console.log(data)
+    // console.log(data)
 
     
 
     const handleConfirm = (id_1, id_2)=>{
-        console.log(id_1, id_2)
-        fetch(`http://localhost:5000/getallfood/v1/${id_1}`,{
+        // console.log(id_1, id_2)
+        fetch(`https://b8a11-server-side-jannat-jui.vercel.app/getallfood/v1/${id_1}`,{
           method: 'PATCH',
           headers: {
             'content-type': 'application/json'
@@ -49,7 +49,7 @@ const ManageSignleFood = () => {
         })
         .then(res=>res.json())
         .then(data=>{
-          console.log(data)
+        //   console.log(data)
           if(data.modifiedCount > 0){
             const remaining = myfood.filter(item => item._id !== id_1);
             const updated = myfood.find(item => item._id === id_1);
@@ -68,7 +68,7 @@ const ManageSignleFood = () => {
 
 
 
-        fetch(`http://localhost:5000/foodrequestcollection/v1/${id_2}`,{
+        fetch(`https://b8a11-server-side-jannat-jui.vercel.app/foodrequestcollection/v1/${id_2}`,{
             method: 'PATCH',
             headers: {
               'content-type': 'application/json'
@@ -77,7 +77,7 @@ const ManageSignleFood = () => {
           })
           .then(res=>res.json())
           .then(data=>{
-            console.log(data)
+            // console.log(data)
             // if(data.modifiedCount > 0){
             //   const remaining = myfood.filter(item => item._id !== id_1);
             //   const updated = myfood.find(item => item._id === id_1);

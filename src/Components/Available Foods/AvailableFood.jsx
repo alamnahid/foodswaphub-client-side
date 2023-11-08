@@ -13,14 +13,14 @@ const AvailableFood = () => {
     const [searchFoodName, setSearchFoodName] = useState('') 
     
 
-    console.log(searchFoodName.toLowerCase())
+    // console.log(searchFoodName.toLowerCase())
 
 
     const axios = useAxios()
     // console.log(foodExpireDate)
 
     const getFoods = async ()=>{
-        const res = await fetch(`http://localhost:5000/getallfood/v1?sortField=expiredate&sortOrder=${foodExpireDate}&foodName=${searchFoodName}`)
+        const res = await fetch(`https://b8a11-server-side-jannat-jui.vercel.app/getallfood/v1?sortField=expiredate&sortOrder=${foodExpireDate}&foodName=${searchFoodName}`, {credentials: 'include'})
         // const res = await axios.get('/getallfood/v1')
         return res.json();
     }
@@ -35,7 +35,7 @@ const AvailableFood = () => {
     if(isError){
         return <p>{error.message}</p>
     }
-    console.log(data)
+    // console.log(data)
     return (
         <div>
             <Helmet>

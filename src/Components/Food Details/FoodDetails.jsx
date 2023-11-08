@@ -1,15 +1,25 @@
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useParams } from "react-router-dom";
 import moment from "moment";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
 import Swal from "sweetalert2";
 import { Helmet } from "react-helmet-async";
+import axios from "axios";
 
 
 const FoodDetails = () => {
 
-    const singleFoodData = useLoaderData();
-    console.log(singleFoodData)
+    // const singleFoodData = useLoaderData();
+    // console.log(singleFoodData)
+    const {id} = useParams()
+    // console.log(id)
+    const [singleFoodData, setSingleFoodData] = useState({})
+
+    useEffect(()=>{
+        axios.get(`https://b8a11-server-side-jannat-jui.vercel.app/getallfood/v1/${id}`, { withCredentials: true })
+        .then(data=>setSingleFoodData(data.data))
+    },[id])
+    // console.log(singleFoodData)
 
     const time = moment().format('L'); 
     const { user } = useContext(AuthContext)
@@ -36,9 +46,9 @@ const FoodDetails = () => {
             foodname, foodimage, foodId, donaremail, foodstatus, donarname, username, userimage, useremail, requestdatetime, pickuplocation, expiredate, donationamount, additionalnotes
         }
 
-        console.log(requestFoodInfo)
+        // console.log(requestFoodInfo)
 
-        fetch('http://localhost:5000/foodrequestcollection/v1', {
+        fetch('https://b8a11-server-side-jannat-jui.vercel.app/foodrequestcollection/v1', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -47,7 +57,7 @@ const FoodDetails = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
+                // console.log(data);
                 form.reset();
                 if (data.insertedId) {
                     Swal.fire({
@@ -63,8 +73,8 @@ const FoodDetails = () => {
     }
 
 
-    const food = useLoaderData();
-    console.log(food)
+    // const food = useLoaderData();
+    // console.log(food)
     return (
         <div>
             <Helmet>
@@ -74,7 +84,7 @@ const FoodDetails = () => {
 
                 <div className="md:grid md:grid-cols-2 md:items-center md:gap-12 xl:gap-32">
                     <div className="">
-                        <img className="rounded-xl w-[40vw]" src={food?.foodImage} alt="Image Description" />
+                        <img className="rounded-xl w-[40vw]" src={singleFoodData?.foodImage} alt="Image Description" />
                     </div>
 
                     <div className="mt-5 sm:mt-10 lg:mt-0">
@@ -82,18 +92,18 @@ const FoodDetails = () => {
 
                             <div className="space-y-2 md:space-y-4">
                                 <h2 className="font-bold text-3xl lg:text-4xl text-gray-800 dark:text-gray-200">
-                                    {food?.foodName}
+                                    {singleFoodData?.foodName}
                                 </h2>
                                 <div className="grid sm:flex rounded-br-xl bg-[#ffb30e1a]  sm:items-center gap-y-3 gap-x-4">
-                                    <img className=" w-20 h-20" src={food?.donarimage} alt="Image Description" />
+                                    <img className=" w-20 h-20" src={singleFoodData?.donarimage} alt="Image Description" />
 
                                     <div className="sm:flex sm:flex-col sm:h-full">
                                         <div>
                                             <h3 className="font-medium text-gray-800 dark:text-gray-200">
-                                                Donar: {food?.donarname}
+                                                Donar: {singleFoodData?.donarname}
                                             </h3>
                                             <p className="mt-1 text-base  text-gray-700">
-                                                Pickup Location: {food?.pickuplocation}
+                                                Pickup Location: {singleFoodData?.pickuplocation}
                                             </p>
                                         </div>
                                     </div>
@@ -111,7 +121,7 @@ const FoodDetails = () => {
                                     </svg>
 
                                     <span className="text-sm sm:text-base text-gray-500">
-                                        <span className="font-bold">Food Quantity </span>{food?.foodquantity} Person
+                                        <span className="font-bold">Food Quantity </span>{singleFoodData?.foodquantity} Person
                                     </span>
                                 </li>
 
@@ -122,7 +132,7 @@ const FoodDetails = () => {
                                     </svg>
 
                                     <span className="text-sm sm:text-base text-gray-500">
-                                        Expired Date <span className="font-bold">{food?.expiredate}</span>
+                                        Expired Date <span className="font-bold">{singleFoodData?.expiredate}</span>
                                     </span>
                                 </li>
                                 <li className="flex space-x-3">
@@ -132,7 +142,7 @@ const FoodDetails = () => {
                                     </svg>
 
                                     <span className="text-sm sm:text-base font-bold text-gray-500">
-                                        Notes: <span className="font-normal">{food?.additionalnotes}</span>
+                                        Notes: <span className="font-normal">{singleFoodData?.additionalnotes}</span>
                                     </span>
                                 </li>
 
@@ -192,7 +202,7 @@ const FoodDetails = () => {
                                                                                     <label className="inline-block text-sm font-medium text-gray-800 mt-2.5 dark:text-gray-200">
                                                                                         Food Name
                                                                                     </label>
-                                                                                    <input type="text" name='foodname' className="py-2 px-3 pr-11 block w-full border-gray-200 shadow-sm rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400" defaultValue={food?.foodName} readOnly />
+                                                                                    <input type="text" name='foodname' className="py-2 px-3 pr-11 block w-full border-gray-200 shadow-sm rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400" defaultValue={singleFoodData?.foodName} readOnly />
                                                                                 </div>
 
                                                                                 <div className="space-y-2">
@@ -200,7 +210,7 @@ const FoodDetails = () => {
                                                                                         Food Image URL
                                                                                     </label>
 
-                                                                                    <input type="text" name='foodimage' className="py-2 px-3 pr-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400" placeholder="Enter photo" defaultValue={food?.foodImage} readOnly />
+                                                                                    <input type="text" name='foodimage' className="py-2 px-3 pr-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400" placeholder="Enter photo" defaultValue={singleFoodData?.foodImage} readOnly />
                                                                                 </div>
 
                                                                                 <div className="space-y-2">
@@ -208,7 +218,7 @@ const FoodDetails = () => {
                                                                                         Food Id
                                                                                     </label>
 
-                                                                                    <input type="text" name='foodId' className="py-2 px-3 pr-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400" placeholder="Enter Food Id" defaultValue={food?._id} readOnly />
+                                                                                    <input type="text" name='foodId' className="py-2 px-3 pr-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400" placeholder="Enter Food Id" defaultValue={singleFoodData?._id} readOnly />
                                                                                 </div>
 
                                                                                 <div className="flex flex-col lg:flex-row items-center gap-8">
@@ -217,7 +227,7 @@ const FoodDetails = () => {
                                                                                             Donator Email
                                                                                         </label>
 
-                                                                                        <input type="email" name='donaremail' className="py-2 px-3 pr-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400" placeholder="Enter Your Email" defaultValue={food?.donaremail} readOnly />
+                                                                                        <input type="email" name='donaremail' className="py-2 px-3 pr-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400" placeholder="Enter Your Email" defaultValue={singleFoodData?.donaremail} readOnly />
                                                                                     </div>
 
                                                                                     <div className="space-y-2 w-full">
@@ -225,7 +235,7 @@ const FoodDetails = () => {
                                                                                             Donator Name
                                                                                         </label>
 
-                                                                                        <input type="text" name="donarname" className="py-2 px-3 pr-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400" placeholder="Enter Your Name" defaultValue={food?.donarname} readOnly />
+                                                                                        <input type="text" name="donarname" className="py-2 px-3 pr-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400" placeholder="Enter Your Name" defaultValue={singleFoodData?.donarname} readOnly />
                                                                                     </div>
 
 
@@ -260,7 +270,7 @@ const FoodDetails = () => {
                                                                                         Pick up Location
                                                                                     </label>
 
-                                                                                    <input type="text" name="pickuplocation" className="py-2 px-3 pr-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400" placeholder="Enter pickup location" defaultValue={food?.pickuplocation} readOnly />
+                                                                                    <input type="text" name="pickuplocation" className="py-2 px-3 pr-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400" placeholder="Enter pickup location" defaultValue={singleFoodData?.pickuplocation} readOnly />
                                                                                 </div>
 
                                                                                 <div className="space-y-2">
@@ -268,7 +278,7 @@ const FoodDetails = () => {
                                                                                         Expired Date
                                                                                     </label>
 
-                                                                                    <input type="date" name="expiredate" className="py-2 px-3 pr-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400" placeholder="Enter expire date" defaultValue={food?.expiredate} readOnly />
+                                                                                    <input type="date" name="expiredate" className="py-2 px-3 pr-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400" placeholder="Enter expire date" defaultValue={singleFoodData?.expiredate} readOnly />
                                                                                 </div>
 
 

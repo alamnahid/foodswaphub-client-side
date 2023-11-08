@@ -18,10 +18,10 @@ const MyFoodRequestCard = ({food, refetch}) => {
         confirmButtonText: 'Yes, Cancel this'
       }).then((result) => {
         if (result.isConfirmed) {
-            axios.delete(`http://localhost:5000/foodrequestcollection/v1/${id}`)
+            axios.delete(`https://b8a11-server-side-jannat-jui.vercel.app/foodrequestcollection/v1/${id}`)
             // .then(res=>res.json())
             .then(data => {
-                console.log(data.data);
+                // console.log(data.data);
                 if (data.data.deletedCount > 0) {
                     Swal.fire(
                         'Cancel!',
@@ -71,15 +71,13 @@ const MyFoodRequestCard = ({food, refetch}) => {
         </button>
 
         {
-          food?.foodstatus === "available" ? <button onClick={()=>handleDelete(food._id)} className="w-full py-3 px-4 inline-flex justify-center items-center gap-2 rounded-br-xl font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-[#FFB30E] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm sm:p-4 dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800">
-          Cancel Request
-         </button>
-
-         :
-
-         <button className="w-full py-3 px-4 inline-flex justify-center items-center gap-2 rounded-br-xl font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-[#FFB30E] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm sm:p-4 dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800">
+          food?.foodstatus === "delivered"  ? <button className="w-full py-3 px-4 inline-flex justify-center items-center gap-2 rounded-br-xl font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-[#FFB30E] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm sm:p-4 dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800">
          Food Already Delivered
         </button>
+         :
+          <button onClick={()=>handleDelete(food._id)} className="w-full py-3 px-4 inline-flex justify-center items-center gap-2 rounded-br-xl font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-[#FFB30E] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm sm:p-4 dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800">
+          Cancel Request
+         </button>
         }
         
       </div>

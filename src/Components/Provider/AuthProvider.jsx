@@ -51,13 +51,13 @@ const AuthProvider = ({ children }) => {
             console.log('current user', createUser);
             setLoading(false)
             if (createUser) {
-                axios.post('http://localhost:5000/jwt', loggedUser, { withCredentials: true })
+                axios.post('https://b8a11-server-side-jannat-jui.vercel.app/jwt', loggedUser, { withCredentials: true })
                     .then(res => {
                         console.log('token response', res.data);
                     })
             }
             else {
-                axios.post('http://localhost:5000/logout', loggedUser, {
+                axios.post('https://b8a11-server-side-jannat-jui.vercel.app/logout', loggedUser, {
                     withCredentials: true
                 })
                     .then(res => {

@@ -7,7 +7,7 @@ import Spinner from "../../Spinner/Spinner";
 const FeatureFood = () => {
 
     const getFoods = async ()=>{
-        const res = await fetch(`http://localhost:5000/getallfood/v1?sortField=foodquantity&sortOrder=desc`)
+        const res = await fetch(`https://b8a11-server-side-jannat-jui.vercel.app/getallfood/v1?sortField=foodquantity&sortOrder=desc`, {credentials: 'include'})
         return res.json();
     }
     const {data, isLoading, isError, error} = useQuery({

@@ -14,10 +14,10 @@ const MyFoodRequest = () => {
     const {user} = useContext(AuthContext)
     // console.log(user.email)
     const foodDatacollection = useLoaderData()
-    console.log(foodDatacollection)
+    // console.log(foodDatacollection)
 
     const getFoods = async ()=>{
-        const res = await fetch(`http://localhost:5000/foodrequestcollection/v1?useremail=${user?.email}`)
+        const res = await fetch(`https://b8a11-server-side-jannat-jui.vercel.app/foodrequestcollection/v1?useremail=${user?.email}`, {credentials:'include'})
         // const res = await axios.get('/getallfood/v1')
         return res.json();
     }
@@ -32,7 +32,7 @@ const MyFoodRequest = () => {
     if(isError){
         return <p>{error.message}</p>
     }
-    console.log(data)
+    // console.log(data)
 
 
 

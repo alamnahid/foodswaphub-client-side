@@ -10,17 +10,17 @@ import Lottie from "lottie-react";
 const ManageMyFoods = () => {
   const [foods, setFoods] = useState([])
   useEffect(()=>{
-    fetch('http://localhost:5000/getallfood/v1')
+    fetch('https://b8a11-server-side-jannat-jui.vercel.app/getallfood/v1', {credentials: 'include'})
     .then(res=>res.json())
     .then(food=>setFoods(food))
   },[])
   const { user } = useContext(AuthContext);
   const email = user.email
-  console.log(email)
+//   console.log(email)
     // const axios = useAxios()
 
     const getFoods = async ()=>{
-        const res = await fetch(`http://localhost:5000/getallfood/v1?donaremail=${email}`)
+        const res = await fetch(`https://b8a11-server-side-jannat-jui.vercel.app/getallfood/v1?donaremail=${email}`, {credentials: 'include'})
         // const res = await axios.get('/getallfood/v1')
         return res.json();
     }
@@ -35,7 +35,7 @@ const ManageMyFoods = () => {
     if(isError){
         return <p>{error.message}</p>
     }
-    console.log(data.length)
+    // console.log(data.length)
     
     return (
         <div className='mt-16 mx-auto w-[80vw] rounded-lg'>

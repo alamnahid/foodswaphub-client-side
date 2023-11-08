@@ -12,7 +12,7 @@ const Review = () => {
       showStatus={false}
       showThumbs={false}
       infiniteLoop={true}
-      interval={2000} // Autoplay interval in milliseconds
+      interval={2000}
     >
       <div>
         
