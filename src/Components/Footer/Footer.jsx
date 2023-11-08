@@ -1,4 +1,4 @@
-import { FooterComponent } from "flowbite-react";
+
 import { Link } from "react-router-dom";
 
 

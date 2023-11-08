@@ -1,5 +1,5 @@
 /* eslint-disable react/no-unknown-property */
-import login from "../../../../public/feature1.json"
+import login from "../../../JSON/feature1.json"
 import Lottie from "lottie-react";
 
 const HomeFeature = () => {

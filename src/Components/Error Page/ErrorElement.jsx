@@ -1,5 +1,5 @@
 import { useNavigate, useRouteError } from "react-router-dom";
-import login from "../../../public/404.json"
+import login from "../../../src/JSON/404.json"
 import Lottie from "lottie-react";
 
 const ErrorElement = () => {

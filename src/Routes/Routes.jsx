@@ -62,7 +62,8 @@ const router = createBrowserRouter([
         },
         {
             path: '/foodrequest',
-            element: <PrivateRoutes><MyFoodRequest></MyFoodRequest></PrivateRoutes>
+            element: <PrivateRoutes><MyFoodRequest></MyFoodRequest></PrivateRoutes>,
+            loader: ()=> fetch('http://localhost:5000/getallfood/v1')
         }
       ]
     },

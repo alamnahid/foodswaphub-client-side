@@ -4,7 +4,7 @@ import { useQuery } from '@tanstack/react-query';
 import { AuthContext } from '../Provider/AuthProvider';
 import Spinner from '../Spinner/Spinner';
 import { Helmet } from 'react-helmet-async';
-import login from "../../../public/nothing.json"
+import login from "../../JSON/nothing.json"
 import Lottie from "lottie-react";
 
 const ManageMyFoods = () => {
@@ -49,7 +49,7 @@ const ManageMyFoods = () => {
             </div>
                 :
 
-             <ManageDataTable data={data} refetch={refetch}></ManageDataTable>
+             <div className=''><ManageDataTable data={data} refetch={refetch}></ManageDataTable></div>
             }
         </div>
     );

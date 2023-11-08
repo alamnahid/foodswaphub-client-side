@@ -1,5 +1,5 @@
 /* eslint-disable react/no-unknown-property */
-import faq from "../../../../public/faq.json"
+import faq from "../../../../src/JSON/faq.json"
 import Lottie from "lottie-react";
 
 const Faq = () => {

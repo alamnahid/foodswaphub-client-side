@@ -4,14 +4,17 @@ import { AuthContext } from "../Provider/AuthProvider";
 import { useQuery } from "@tanstack/react-query";
 import Spinner from "../Spinner/Spinner";
 import { Helmet } from "react-helmet-async";
-import login from "../../../public/nothing.json"
+import login from "../../JSON/nothing.json"
 import Lottie from "lottie-react";
+import { useLoaderData } from "react-router-dom";
 
 
 const MyFoodRequest = () => {
 
     const {user} = useContext(AuthContext)
     // console.log(user.email)
+    const foodDatacollection = useLoaderData()
+    console.log(foodDatacollection)
 
     const getFoods = async ()=>{
         const res = await fetch(`http://localhost:5000/foodrequestcollection/v1?useremail=${user?.email}`)
@@ -44,7 +47,7 @@ const MyFoodRequest = () => {
                     <Lottie className="w-[30vw] rounded-md" loop={true} animationData={login} />;
                 </div>
                 :
-         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
             {
                 data?.map(food=> <MyFoodRequestCard key={food._id} food={food} refetch={refetch}></MyFoodRequestCard>)
             }

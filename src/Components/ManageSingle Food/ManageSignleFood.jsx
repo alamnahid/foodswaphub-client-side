@@ -4,7 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import Swal from "sweetalert2";
 import Spinner from "../Spinner/Spinner";
-import login from "../../../public/nothing.json"
+import login from "../../JSON/nothing.json"
 import Lottie from "lottie-react";
 
 const ManageSignleFood = () => {
@@ -13,6 +13,7 @@ const ManageSignleFood = () => {
     const foodId = foodData._id;
 
     const [myfood, setmyFood] = useState([foodData])
+    
 
     console.log(myfood)
 
@@ -35,8 +36,11 @@ const ManageSignleFood = () => {
     }
     console.log(data)
 
-    const handleConfirm = id=>{
-        fetch(`http://localhost:5000/getallfood/v1/${id}`,{
+    
+
+    const handleConfirm = (id_1, id_2)=>{
+        console.log(id_1, id_2)
+        fetch(`http://localhost:5000/getallfood/v1/${id_1}`,{
           method: 'PATCH',
           headers: {
             'content-type': 'application/json'
@@ -47,8 +51,8 @@ const ManageSignleFood = () => {
         .then(data=>{
           console.log(data)
           if(data.modifiedCount > 0){
-            const remaining = myfood.filter(item => item._id !== id);
-            const updated = myfood.find(item => item._id === id);
+            const remaining = myfood.filter(item => item._id !== id_1);
+            const updated = myfood.find(item => item._id === id_1);
             updated.foodstatus = 'delivered'
             const newFoods = [updated, ...remaining];
             setmyFood(newFoods)
@@ -61,6 +65,28 @@ const ManageSignleFood = () => {
        
           }
         })
+
+
+
+        fetch(`http://localhost:5000/foodrequestcollection/v1/${id_2}`,{
+            method: 'PATCH',
+            headers: {
+              'content-type': 'application/json'
+            },
+            body: JSON.stringify({foodstatus: 'delivered'})
+          })
+          .then(res=>res.json())
+          .then(data=>{
+            console.log(data)
+            // if(data.modifiedCount > 0){
+            //   const remaining = myfood.filter(item => item._id !== id_1);
+            //   const updated = myfood.find(item => item._id === id_1);
+            //   updated.foodstatus = 'delivered'
+            //   const newFoods = [updated, ...remaining];
+            //   setmyFood(newFoods)
+            //   refetch()
+            // }
+          })
       }
 
 
@@ -70,7 +96,7 @@ const ManageSignleFood = () => {
 
 <div className="md:grid md:grid-cols-1 md:items-center md:gap-12 xl:gap-32">
     <div className="">
-        <img className="rounded-xl w-[20vw]" src={food} alt="Image Description" />
+        <img className="rounded-xl w-full lg:w-[20vw]" src={food} alt="Image Description" />
         <h2 className="font-bold text-3xl mt-4 lg:text-4xl text-gray-800 dark:text-gray-200">
                     Food Name: {foodData?.foodName}
                 </h2>
@@ -136,9 +162,9 @@ const ManageSignleFood = () => {
                 </li>
             </ul>
             {
-                foodData.foodstatus === 'delivered' ? <button onClick={()=>handleConfirm(foodData._id)} type="button" className="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Delivered</button>
+                foodData.foodstatus === 'delivered' ? <button type="button" className="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Delivered</button>
                 :
-                <button  onClick={()=>handleConfirm(foodData._id)}  type="button" className="focus:outline-none text-white bg-red-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-green-800">Pending</button>
+                <button  onClick={()=>handleConfirm(foodData._id, food._id)}  type="button" className="focus:outline-none text-white bg-red-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-green-800">Pending</button>
             }
 
             {/* <button type="button" className="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">Pending</button> */}

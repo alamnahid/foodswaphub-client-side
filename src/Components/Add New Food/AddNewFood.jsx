@@ -24,6 +24,7 @@ const AddNewFood = () => {
                                 confirmButtonText: 'Ok'
                               })
         }
+       
     })
     
     const handleAddProduct = (e)=>{
@@ -54,6 +55,8 @@ const AddNewFood = () => {
             donarname,
             donarimage,
             donaremail})
+
+            form.reset()
 
         
     }

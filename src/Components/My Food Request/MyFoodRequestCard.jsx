@@ -3,7 +3,7 @@ import Swal from "sweetalert2";
 
 
 const MyFoodRequestCard = ({food, refetch}) => {
-  // console.log(food.foodstatus)
+  // console.log(food.foodstatus.toLowerCase())
 
 
   const handleDelete = (id)=>{

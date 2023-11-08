@@ -19,7 +19,7 @@ transition={{
 >
 
 <div className="pt-4 relative">
-    <img className="h-[200px] rounded-xl" src={food?.foodImage} alt="" />
+    <img className="h-[200px] w-full rounded-xl" src={food?.foodImage} alt="" />
 
     <div className="h-fit absolute bottom-0 py-2 px-3 text-lg font-semibold w-full bg-[#FFB30E] rounded-b-lg text-white">
         <p>Food Quantity {food?.foodquantity} Person</p>

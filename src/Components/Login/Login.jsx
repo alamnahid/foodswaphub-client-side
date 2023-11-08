@@ -1,5 +1,5 @@
 import LoginForm from "./LoginForm";
-import login from "../../../public/login.json"
+import login from "../../JSON/login.json"
 import Lottie from "lottie-react";
 import { Helmet } from "react-helmet-async";
 

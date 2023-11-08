@@ -1,3 +1,5 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
 import { useTable } from 'react-table';
 import { BiMessageSquareX } from "react-icons/bi";
@@ -96,8 +98,8 @@ const ManageDataTable = ({data, refetch}) => {
         }
     return (
         <div>
-            <table {...getTableProps()}>
-      <thead>
+            <table className='h-fit space-y-4' {...getTableProps()}>
+      <thead className=''>
         {headerGroups.map((headerGroup) => (
           <tr {...headerGroup.getHeaderGroupProps()}>
             {headerGroup.headers.map((column) => (
@@ -110,7 +112,7 @@ const ManageDataTable = ({data, refetch}) => {
         {rows.map((row) => {
           prepareRow(row);
           return (
-            <tr {...row.getRowProps()}>
+            <tr className='' {...row.getRowProps()}>
               {row.cells.map((cell) => {
                 return (
                   <td {...cell.getCellProps()}>{cell.render('Cell')}</td>

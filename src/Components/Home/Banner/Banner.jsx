@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unknown-property */
 import { Link } from "react-router-dom";
-import food from "../../../../public/bannerfood.json"
+import food from "../../../../src/JSON/bannerfood.json"
 import Lottie from "lottie-react";
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
@@ -12,7 +12,7 @@ const Banner = () => {
         <div>
 
 
-<div className="xl:max-w-[70vw] mt-28 mx-auto px-4 sm:px-6 lg:px-8">
+<div className="max-w-[85rem] mt-28 mx-auto px-4 sm:px-6 lg:px-8">
  
   <div className="grid md:grid-cols-2 gap-4 md:gap-8 xl:gap-20 md:items-center">
   <Carousel
@@ -20,8 +20,8 @@ const Banner = () => {
       showArrows={false}
       showStatus={false}
       showThumbs={false}
-      infiniteLoop={true} // Enable continuous looping
-      interval={2000} // Autoplay interval in milliseconds
+      infiniteLoop={true}
+      interval={2000}
     >
       <div className="mb-8">
       <h1 className="block text-left text-3xl font-bold text-gray-800 sm:text-3xl lg:text-5xl lg:leading-tight dark:text-white">Zero Waste, Infinite Love, Join the <span className="text-[#FFB30E]">Food Share Revolution</span></h1>

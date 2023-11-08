@@ -1,14 +1,14 @@
 
 import AvailableFoodBanner from "./AvailableFoodBanner";
 import AvailableFoodCard from "./AvailableFoodCard";
-import { useRef, useState } from "react";
+import {  useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import useAxios from "../Hooks/useAxios";
 import Spinner from "../Spinner/Spinner";
 import { Helmet } from "react-helmet-async";
 
 const AvailableFood = () => {
-    const [foods, setFoods] = useState([])
+    // const [foods, setFoods] = useState([])
     const [foodExpireDate, setFoodExpireDate] = useState('')
     const [searchFoodName, setSearchFoodName] = useState('') 
     
@@ -48,7 +48,7 @@ const AvailableFood = () => {
              ></AvailableFoodBanner>
             
 
-            <div className="mt-28 max-w-[80vw] mx-auto grid grid-cols-3  justify-items-center gap-12">
+            <div className="mt-28 max-w-[80vw] mx-auto grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3  justify-items-center gap-12">
                 {
                     data?.map(food=><AvailableFoodCard key={food._id} food={food}></AvailableFoodCard>)
                 }
