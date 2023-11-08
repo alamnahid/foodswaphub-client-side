@@ -3,6 +3,9 @@ import food from "../../assets/images/bannerimage.png"
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import Swal from "sweetalert2";
+import Spinner from "../Spinner/Spinner";
+import login from "../../../public/nothing.json"
+import Lottie from "lottie-react";
 
 const ManageSignleFood = () => {
     const foodData = useLoaderData();
@@ -25,7 +28,7 @@ const ManageSignleFood = () => {
     })
 
     if(isLoading){
-        return <p>loading....</p>
+        return <Spinner></Spinner>
     }
     if(isError){
         return <p>{error.message}</p>
@@ -68,6 +71,9 @@ const ManageSignleFood = () => {
 <div className="md:grid md:grid-cols-1 md:items-center md:gap-12 xl:gap-32">
     <div className="">
         <img className="rounded-xl w-[20vw]" src={food} alt="Image Description" />
+        <h2 className="font-bold text-3xl mt-4 lg:text-4xl text-gray-800 dark:text-gray-200">
+                    Food Name: {foodData?.foodName}
+                </h2>
 
         
     </div>
@@ -76,13 +82,16 @@ const ManageSignleFood = () => {
 
 
     {
+        data.length===0 ? <div className="flex items-center gap-4">
+            <h1 className="text-xl font-bold">No User request for this food yet</h1>
+            <Lottie className="w-[20vw] rounded-md" loop={true} animationData={login} />;
+        </div>
+        :
         data.map(food=><div key={food._id} className="mt-5 sm:mt-10 lg:mt-0">
         <div className="space-y-6 sm:space-y-8">
 
             <div className="space-y-2 md:space-y-4">
-                <h2 className="font-bold text-3xl lg:text-4xl text-gray-800 dark:text-gray-200">
-                    {food?.foodname}
-                </h2>
+                
                 <div className="grid rounded-br-xl   sm:items-center gap-y-3 gap-x-4">
             <h1 className="text-xl font-bold">Requester</h1>
             <img className=" w-20 rounded-2xl h-20" src={food?.userimage} alt="Image Description" />

@@ -1,12 +1,22 @@
+/* eslint-disable react/prop-types */
 import { HiOutlineLocationMarker } from "react-icons/hi";
 import { FaRegCalendarAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import {motion} from "framer-motion"
 
 const AvailableFoodCard = ({food}) => {
     return (
         <div>
 
-<div className="w-full lg:w-[380px] h-[500px] px-8  bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+<motion.div className="w-full lg:w-[380px] h-[500px] px-8  bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
+initial={{ scale: 0 }}
+animate={{ rotate: 360, scale: 1 }}
+transition={{
+  type: "spring",
+  stiffness: 260,
+  damping: 20
+}}
+>
 
 <div className="pt-4 relative">
     <img className="h-[200px] rounded-xl" src={food?.foodImage} alt="" />
@@ -57,7 +67,7 @@ const AvailableFoodCard = ({food}) => {
         
     </div>
 </div>
-</div>
+</motion.div>
             
         </div>
     );

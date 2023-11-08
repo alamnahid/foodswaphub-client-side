@@ -9,7 +9,7 @@ import { Helmet } from "react-helmet-async";
 const FoodDetails = () => {
 
     const singleFoodData = useLoaderData();
-    console.log(singleFoodData.foodstatus)
+    console.log(singleFoodData)
 
     const time = moment().format('L'); 
     const { user } = useContext(AuthContext)
@@ -28,7 +28,7 @@ const FoodDetails = () => {
         const requestdatetime = time;
         const pickuplocation = e.target.pickuplocation.value;
         const expiredate = e.target.expiredate.value;
-        const donationamount = e.target.expiredate.value;
+        const donationamount = e.target.donationamount.value;
         const additionalnotes = e.target.additionalnotes.value;
         const foodstatus = singleFoodData.foodstatus;
 

@@ -1,5 +1,6 @@
 import { useNavigate, useRouteError } from "react-router-dom";
-
+import login from "../../../public/404.json"
+import Lottie from "lottie-react";
 
 const ErrorElement = () => {
     const error = useRouteError();
@@ -10,15 +11,15 @@ const ErrorElement = () => {
     }
     return (
         <div>
-            <div className="my-[30vh]">
-           <p className="text-2xl font-medium text-center">{error.statusText || error.message}</p>
+            <div className="mt-24">
+           <p className="text-xl font-medium text-center">{error.statusText || error.message}</p>
 
            <p className="text-2xl font-medium text-center">
             {
                 error.status === 404 && <div>
-                    <h3 className='text-[2rem] mt-8 lg:text-[4rem] font-medium'>404 Not Found</h3>
-                    <p>loading</p>
-                    <button onClick={handlebackhome} className=' border-none text-white w-[16rem] bg-[#F45E0C] mt-14- h-12'>Back to Home Page</button>
+                    
+                    <button onClick={handlebackhome} className='mt-5 border-none text-white w-[16rem] bg-[#F45E0C] mt-14- h-12'>Back to Home Page</button>
+                    <Lottie className="w-[70vw] h-[70vh] mx-auto rounded-md" loop={true} animationData={login} />;
                 </div>
             }
            </p>

@@ -2,7 +2,9 @@ import { Helmet } from "react-helmet-async";
 import Banner from "./Banner/Banner";
 import FeatureFood from "./Feature Food/FeatureFood";
 import Feature from "./Feature/Feature";
-import FramerMotion from "./FramerMotion";
+import HomeFeature from "./HomeFeature/HomeFeature";
+import Faq from "./FAQ/Faq";
+import Review from "./Review/Review";
 
 
 const Home = () => {
@@ -13,8 +15,11 @@ const Home = () => {
             </Helmet>
             <Banner></Banner>
             <FeatureFood></FeatureFood>
-            <FramerMotion></FramerMotion>
+            <HomeFeature></HomeFeature>
             <Feature></Feature>
+            <Faq></Faq>
+            <Review></Review>
+
 
 
         </div>

@@ -42,27 +42,27 @@ const MyFoodRequestCard = ({food, refetch}) => {
 
             <div className="group flex flex-col pt-4 h-full bg-white border border-gray-200 shadow-sm rounded-xl dark:bg-slate-900 dark:border-gray-700 dark:shadow-slate-700/[.7]">
       <div className="h-52 flex flex-col justify-center items-center rounded-t-xl">
-        <img className="w-[300px] h-[260px]" src="https://i.ibb.co/862SWV8/Frame-65-4.png" alt="" />
+        <img className="w-[300px] h-[260px]" src={food?.foodimage} alt="" />
       </div>
       <div className="p-4 md:p-6">
         
         <h3 className="text-xl font-semibold text-gray-800 dark:text-gray-300 dark:hover:text-white">
-          Food Name
+          {food?.foodname}
         </h3>
         <h3 className="text-lg font-semibold text-gray-600 dark:text-gray-300 dark:hover:text-white">
-          Donor Name
+          Donor Name: {food?.donarname}
         </h3>
         <p className="mt-3 text-gray-500">
-        location
+        location: {food?.pickuplocation}
         </p>
         <p className="mt-3 text-gray-500">
-        Expire Date
+        Expire Date: {food?.expiredate}
         </p>
         <p className="mt-3 text-gray-500">
-        Request Date
+        Request Date: {food?.requestdatetime}
         </p>
         <p className="mt-3 text-gray-500">
-        Your Donation Amount
+        Your Donation Amount: {food?.donationamount}
         </p>
       </div>
       <div className="mt-auto flex border-t border-gray-200 divide-x divide-gray-200 dark:border-gray-700 dark:divide-gray-700">

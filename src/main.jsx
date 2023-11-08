@@ -10,9 +10,11 @@ import AuthProvider from './Components/Provider/AuthProvider';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 const queryClient = new QueryClient()
 import { HelmetProvider } from 'react-helmet-async';
+import { AnimatePresence } from "framer-motion";
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
+    <AnimatePresence>
     <HelmetProvider>
     <QueryClientProvider client={queryClient}>
       <AuthProvider>
@@ -21,5 +23,6 @@ ReactDOM.createRoot(document.getElementById('root')).render(
 
     </QueryClientProvider>
     </HelmetProvider>
+    </AnimatePresence>
   </React.StrictMode>,
 )

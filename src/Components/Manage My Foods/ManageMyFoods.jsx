@@ -4,6 +4,8 @@ import { useQuery } from '@tanstack/react-query';
 import { AuthContext } from '../Provider/AuthProvider';
 import Spinner from '../Spinner/Spinner';
 import { Helmet } from 'react-helmet-async';
+import login from "../../../public/nothing.json"
+import Lottie from "lottie-react";
 
 const ManageMyFoods = () => {
   const [foods, setFoods] = useState([])
@@ -41,9 +43,10 @@ const ManageMyFoods = () => {
                 <title>Share2Savor | Manage Foods</title>
             </Helmet>
             {
-                data.length===0 ? <div className='flex w-[80vw] h-[50vh] justify-center items-center'>
-                    <h1 className='text-4xl font-bold'>You haven't added any food yet</h1>
-                </div>
+                data.length===0 ? <div className="flex justify-center flex-col items-center mt-24">
+                <h1 className="text-3xl font-bold">You have not requested any food yet</h1>
+                <Lottie className="w-[30vw] rounded-md" loop={true} animationData={login} />;
+            </div>
                 :
 
              <ManageDataTable data={data} refetch={refetch}></ManageDataTable>
