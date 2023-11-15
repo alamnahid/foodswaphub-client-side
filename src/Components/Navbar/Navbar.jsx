@@ -2,6 +2,7 @@
 import { Link, NavLink } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
+import logo from "../../assets/logo/logo.png"
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -15,15 +16,15 @@ const Navbar = () => {
 
 
   return (
-    <div>
+    <div className="mt-5">
 
-      <header className="flex flex-wrap md:justify-start md:flex-nowrap z-50 w-full text-sm">
+      <header className="flex flex-wrap bg-white md:justify-start md:flex-nowrap z-50 w-full text-sm">
 
-        <nav className="mt-6 relative max-w-7xl lg:max-w-[80vw] w-full bg-white border border-gray-200 rounded-[36px] mx-2 py-3 px-4 xl:flex xl:items-center xl:justify-between md:py-0 md:px-6 lg:px-8 xl:mx-auto dark:bg-gray-800 dark:border-gray-700" aria-label="Global">
+        <nav className=" relative max-w-7xl lg:max-w-[80vw] w-full bg-white border border-gray-200 rounded-[36px] mx-2 py-3 px-4 xl:flex xl:items-center xl:justify-between md:py-0 md:px-6 lg:px-8 xl:mx-auto dark:bg-gray-800 dark:border-gray-700" aria-label="Global">
 
           <div className="flex items-center justify-between">
 
-            <p className="flex items-center gap-2 text-xl font-semibold dark:text-white"><img className="w-14" src="" alt="" /> Share2Savor</p>
+            <p className="flex items-center text-xl font-bold dark:text-white"><img className="w-14" src="" alt="" /><img className="w-[3.5rem]" src={logo} alt="" /> Food<span className="text-[#fda400]">swap</span>hub</p>
 
 
             <div className="lg:hidden">
@@ -55,12 +56,12 @@ const Navbar = () => {
 
               <NavLink to="/addnewfoods" className={({ isActive }) =>
                 isActive ? 'font-medium text-[#FFB30E] underline md:py-6 dark:text-[#FFB30E]' : 'font-medium text-gray-500 hover:text-gray-400 md:py-6 dark:text-gray-400 dark:hover:text-gray-500'
-              }>Add New Foods</NavLink>
+              }>Add Foods</NavLink>
 
 
               <NavLink to="/managemyfoods" className={({ isActive }) =>
                 isActive ? 'font-medium text-[#FFB30E] underline md:py-6 dark:text-[#FFB30E]' : 'font-medium text-gray-500 hover:text-gray-400 md:py-6 dark:text-gray-400 dark:hover:text-gray-500'
-              }>Manage My Foods</NavLink>
+              }>My Foods</NavLink>
 
 
               <NavLink to="/foodrequest" className={({ isActive }) =>

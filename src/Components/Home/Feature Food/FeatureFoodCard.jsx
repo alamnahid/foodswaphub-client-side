@@ -7,17 +7,17 @@ const FeatureFoodCard = ({food}) => {
     return (
         <div>
 
-            <div className="w-full lg:w-[380px] h-[500px] px-8  bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+            <div className="w-full lg:w-[380px] h-[500px]   bg-white border border-[#fda400] rounded-bl-[5rem] rounded-tr-[4rem] shadow dark:bg-gray-800 dark:border-gray-700">
 
-                <div className="pt-4 relative">
-                    <img className="h-[200px] w-[350px] mx-auto rounded-xl" src={food?.foodImage} alt="" />
+                <div className="pt-0 relative">
+                    <img className="h-[230px] rounded-tr-[4rem] w-full mx-auto rounded-bl-[3rem]" src={food?.foodImage} alt="" />
 
-                    <div className="h-fit absolute bottom-0 py-2 px-3 text-lg font-semibold w-full bg-[#FFB30E] rounded-b-lg text-white">
-                        <p>Food Quantity {food?.foodquantity} Person</p>
+                    <div className="h-fit  absolute bottom-0 py-2 px-5 text-lg font-semibold w-full bg-[#FFB30E] rounded-bl-[3rem] text-white">
+                        <p>Quantity {food?.foodquantity} Person</p>
                     </div>
 
                 </div>
-                <div className="pt-3 pb-5">
+                <div className="pt-3 pb-5 px-8">
                     <h5 className="text-xl lg:text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">{food?.foodName}</h5>
 
 
