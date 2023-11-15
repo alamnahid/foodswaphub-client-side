@@ -1,10 +1,9 @@
 import { Dna } from "react-loader-spinner";
-import spinner from "../../assets/images/spinner.gif"
 
 const Spinner = () => {
     return (
         <div className="w-[100vw] h-[60vh] flex justify-center items-center flex-col">
-            <img src={spinner} alt="" />
+            <img src="" alt="" />
             <Dna
                 visible={true}
                 height="80"

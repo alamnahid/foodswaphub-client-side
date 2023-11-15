@@ -10,7 +10,7 @@ import Lottie from "lottie-react";
 const ManageMyFoods = () => {
   const [foods, setFoods] = useState([])
   useEffect(()=>{
-    fetch('https://b8a11-server-side-jannat-jui.vercel.app/getallfood/v1', {credentials: 'include'})
+    fetch('http://localhost:5000/getallfood/v1', {credentials: 'include'})
     .then(res=>res.json())
     .then(food=>setFoods(food))
   },[])
@@ -20,7 +20,7 @@ const ManageMyFoods = () => {
     // const axios = useAxios()
 
     const getFoods = async ()=>{
-        const res = await fetch(`https://b8a11-server-side-jannat-jui.vercel.app/getallfood/v1?donaremail=${email}`, {credentials: 'include'})
+        const res = await fetch(`http://localhost:5000/getallfood/v1?donaremail=${email}`, {credentials: 'include'})
         // const res = await axios.get('/getallfood/v1')
         return res.json();
     }

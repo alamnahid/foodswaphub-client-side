@@ -16,7 +16,7 @@ const FoodDetails = () => {
     const [singleFoodData, setSingleFoodData] = useState({})
 
     useEffect(()=>{
-        axios.get(`https://b8a11-server-side-jannat-jui.vercel.app/getallfood/v1/${id}`, { withCredentials: true })
+        axios.get(`http://localhost:5000/getallfood/v1/${id}`, { withCredentials: true })
         .then(data=>setSingleFoodData(data.data))
     },[id])
     // console.log(singleFoodData)
@@ -48,7 +48,7 @@ const FoodDetails = () => {
 
         // console.log(requestFoodInfo)
 
-        fetch('https://b8a11-server-side-jannat-jui.vercel.app/foodrequestcollection/v1', {
+        fetch('http://localhost:5000/foodrequestcollection/v1', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

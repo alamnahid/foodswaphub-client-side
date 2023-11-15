@@ -40,7 +40,7 @@ const router = createBrowserRouter([
         {
             path: '/fooddetails/:id',
             element: <PrivateRoutes><FoodDetails></FoodDetails></PrivateRoutes>
-            // loader: ({params}) => fetch(`https://b8a11-server-side-jannat-jui.vercel.app/getallfood/v1/${params.id}`)
+            // loader: ({params}) => fetch(`http://localhost:5000/getallfood/v1/${params.id}`)
         },
         {
             path: '/addnewfoods',
@@ -53,17 +53,17 @@ const router = createBrowserRouter([
         {
             path: '/updatefood/:id',
             element: <PrivateRoutes><UpdateFoodInfo></UpdateFoodInfo></PrivateRoutes>,
-            loader: ({params}) => fetch(`https://b8a11-server-side-jannat-jui.vercel.app/getallfood/v1/${params.id}`, {credentials: 'include'})
+            loader: ({params}) => fetch(`http://localhost:5000/getallfood/v1/${params.id}`, {credentials: 'include'})
         },
         {
             path: '/managesignlefood/:id',
             element: <PrivateRoutes><ManageSignleFood></ManageSignleFood></PrivateRoutes>,
-            loader: ({params}) => fetch(`https://b8a11-server-side-jannat-jui.vercel.app/getallfood/v1/${params.id}`, {credentials:'include'})
+            loader: ({params}) => fetch(`http://localhost:5000/getallfood/v1/${params.id}`, {credentials:'include'})
         },
         {
             path: '/foodrequest',
             element: <PrivateRoutes><MyFoodRequest></MyFoodRequest></PrivateRoutes>,
-            loader: ()=> fetch('https://b8a11-server-side-jannat-jui.vercel.app/getallfood/v1', {credentials:'include'})
+            loader: ()=> fetch('http://localhost:5000/getallfood/v1', {credentials:'include'})
         }
       ]
     },

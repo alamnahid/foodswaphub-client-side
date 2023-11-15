@@ -1,5 +1,4 @@
 import { useLoaderData } from "react-router-dom";
-import food from "../../assets/images/bannerimage.png"
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import Swal from "sweetalert2";
@@ -19,7 +18,7 @@ const ManageSignleFood = () => {
 
     
     const getFoods = async ()=>{
-        const res = await fetch(`https://b8a11-server-side-jannat-jui.vercel.app/foodrequestcollection/v1?foodId=${foodId}`, {credentials:'include'})
+        const res = await fetch(`http://localhost:5000/foodrequestcollection/v1?foodId=${foodId}`, {credentials:'include'})
         // const res = await axios.get('/getallfood/v1')
         return res.json();
     }
@@ -40,7 +39,7 @@ const ManageSignleFood = () => {
 
     const handleConfirm = (id_1, id_2)=>{
         // console.log(id_1, id_2)
-        fetch(`https://b8a11-server-side-jannat-jui.vercel.app/getallfood/v1/${id_1}`,{
+        fetch(`http://localhost:5000/getallfood/v1/${id_1}`,{
           method: 'PATCH',
           headers: {
             'content-type': 'application/json'
@@ -68,7 +67,7 @@ const ManageSignleFood = () => {
 
 
 
-        fetch(`https://b8a11-server-side-jannat-jui.vercel.app/foodrequestcollection/v1/${id_2}`,{
+        fetch(`http://localhost:5000/foodrequestcollection/v1/${id_2}`,{
             method: 'PATCH',
             headers: {
               'content-type': 'application/json'

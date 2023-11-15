@@ -79,7 +79,7 @@ const ManageDataTable = ({data, refetch}) => {
             confirmButtonText: 'Yes, delete it!'
           }).then((result) => {
             if (result.isConfirmed) {
-                axios.delete(`https://b8a11-server-side-jannat-jui.vercel.app/getallfood/v1/${id}`, {withCredentials: true})
+                axios.delete(`http://localhost:5000/getallfood/v1/${id}`, {withCredentials: true})
                 // .then(res=>res.json())
                 .then(data => {
                     // console.log(data.data);

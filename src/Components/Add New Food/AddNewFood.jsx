@@ -14,7 +14,7 @@ const AddNewFood = () => {
     const {mutate} = useMutation({
         mutationKey: ['food'],
         mutationFn: (addingData)=>{
-            return axios.post('https://b8a11-server-side-jannat-jui.vercel.app/food', addingData, { withCredentials: true, })
+            return axios.post('http://localhost:5000/food', addingData, { withCredentials: true, })
         },
         onSuccess: ()=>{
             Swal.fire({

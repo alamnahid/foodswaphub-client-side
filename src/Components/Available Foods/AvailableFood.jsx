@@ -20,7 +20,7 @@ const AvailableFood = () => {
     // console.log(foodExpireDate)
 
     const getFoods = async ()=>{
-        const res = await fetch(`https://b8a11-server-side-jannat-jui.vercel.app/getallfood/v1?sortField=expiredate&sortOrder=${foodExpireDate}&foodName=${searchFoodName}`, {credentials: 'include'})
+        const res = await fetch(`http://localhost:5000/getallfood/v1?sortField=expiredate&sortOrder=${foodExpireDate}&foodName=${searchFoodName}`, {credentials: 'include'})
         // const res = await axios.get('/getallfood/v1')
         return res.json();
     }

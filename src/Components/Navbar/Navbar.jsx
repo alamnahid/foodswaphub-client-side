@@ -1,6 +1,5 @@
 /* eslint-disable react/no-unknown-property */
 import { Link, NavLink } from "react-router-dom";
-import logo from "../../assets/logo/logo.jpg"
 import { useContext } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
 
@@ -24,7 +23,7 @@ const Navbar = () => {
 
           <div className="flex items-center justify-between">
 
-            <p className="flex items-center gap-2 text-xl font-semibold dark:text-white"><img className="w-14" src={logo} alt="" /> Share2Savor</p>
+            <p className="flex items-center gap-2 text-xl font-semibold dark:text-white"><img className="w-14" src="" alt="" /> Share2Savor</p>
 
 
             <div className="lg:hidden">

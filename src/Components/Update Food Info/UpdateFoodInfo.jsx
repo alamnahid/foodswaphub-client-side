@@ -28,7 +28,7 @@ const UpdateFoodInfo = () => {
 
         // console.log(updateFoodInfo)
 
-        fetch(`https://b8a11-server-side-jannat-jui.vercel.app/getallfood/v1/${foods._id}`,{
+        fetch(`http://localhost:5000/getallfood/v1/${foods._id}`,{
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'

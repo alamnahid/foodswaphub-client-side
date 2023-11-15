@@ -18,7 +18,7 @@ const MyFoodRequestCard = ({food, refetch}) => {
         confirmButtonText: 'Yes, Cancel this'
       }).then((result) => {
         if (result.isConfirmed) {
-            axios.delete(`https://b8a11-server-side-jannat-jui.vercel.app/foodrequestcollection/v1/${id}`)
+            axios.delete(`http://localhost:5000/foodrequestcollection/v1/${id}`)
             // .then(res=>res.json())
             .then(data => {
                 // console.log(data.data);
