@@ -5,9 +5,13 @@ import Feature from "./Feature/Feature";
 import HomeFeature from "./HomeFeature/HomeFeature";
 import Faq from "./FAQ/Faq";
 import Review from "./Review/Review";
+import { useEffect } from "react";
 
 
 const Home = () => {
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
     return (
         <div>
             <Helmet>

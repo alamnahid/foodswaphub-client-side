@@ -58,7 +58,7 @@ const Navbar = () => {
 
               <NavLink to="/managemyfoods" className={({ isActive }) =>
                 isActive ? 'font-medium text-[#FFB30E] underline md:py-6 dark:text-[#FFB30E] text-lg' : 'font-medium text-gray-500 hover:text-gray-400 md:py-6 dark:text-gray-400 dark:hover:text-gray-500 text-lg'
-              }>My Foods</NavLink>
+              }>Manage My Foods</NavLink>
 
 
               <NavLink to="/foodrequest" className={({ isActive }) =>

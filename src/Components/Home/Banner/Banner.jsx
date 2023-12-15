@@ -3,6 +3,7 @@ import banner from "../../../assets/banner.png"
 import { useState } from "react";
 import { TypeAnimation } from "react-type-animation";
 import Button from "../../Button/Button";
+import { Link } from "react-router-dom";
 const Banner = () => {
   const [typingStatus, setTypingStatus] = useState('Initializing');
 
@@ -38,7 +39,7 @@ const Banner = () => {
         <p className="text-lg text-gray-500 mt-8 lg:w-[40rem]">Savor the Flavor of Community! Join FoodSwapHub, where culinary generosity meets digital connections. Share your homemade delights and trade culinary creations with fellow food enthusiasts. </p>
 
        <div className="mt-6">
-       <Button text={'See Foods'}></Button>
+       <Link to='/availablefoods'><Button text={'See Foods'}></Button></Link>
        </div>
 
       </div>

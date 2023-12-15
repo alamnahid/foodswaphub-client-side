@@ -11,7 +11,7 @@ const HomeFeature = () => {
     <div className="relative z-10 lg:grid lg:grid-cols-12 lg:gap-16 lg:items-center">
       <div className="mb-10 lg:mb-0 lg:col-span-6 lg:col-start-8 lg:order-2">
         <h2 className="text-2xl text-gray-800 font-bold sm:text-3xl dark:text-gray-200">
-        Discover Delicious Meals in Share2Savor
+        Discover Delicious Meals in FoodSwapHub
         </h2>
         <nav className="grid gap-4 mt-5 md:mt-10" aria-label="Tabs" role="tablist">
           <button type="button" className="hs-tab-active:bg-white hs-tab-active:shadow-md hs-tab-active:hover:border-transparent text-start hover:bg-gray-200 p-4 md:p-5 rounded-xl dark:hs-tab-active:bg-slate-900 dark:hover:bg-gray-700 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600 active" id="tabs-with-card-item-1" data-hs-tab="#tabs-with-card-1" aria-controls="tabs-with-card-1" role="tab">
@@ -50,15 +50,15 @@ const HomeFeature = () => {
         <div className="relative">
           <div>
             <div id="tabs-with-card-1" role="tabpanel" aria-labelledby="tabs-with-card-item-1">
-              <img className="shadow-xl lg:w-[60vw] lg:h-[60vh] shadow-gray-200 rounded-xl dark:shadow-gray-900/[.2]" src="https://i.ibb.co/r20qnnH/IMG-20200411-184947.jpg" alt="Image Description" />
+              <img className="shadow-xl lg:w-[60vw] lg:h-[60vh] shadow-gray-200 rounded-xl dark:shadow-gray-900/[.2]" src="https://i.ibb.co/z6Yp1VV/1701782451098.jpg" alt="Image Description" />
             </div>
-
+            
             <div id="tabs-with-card-2" className="hidden" role="tabpanel" aria-labelledby="tabs-with-card-item-2">
-              <img className="shadow-xl lg:w-[60vw] lg:h-[60vh] shadow-gray-200 rounded-xl dark:shadow-gray-900/[.2]" src="https://i.ibb.co/J757WcR/sharing-food.jpg" alt="Image Description" />
+              <img className="shadow-xl lg:w-[60vw] lg:h-[60vh] shadow-gray-200 rounded-xl dark:shadow-gray-900/[.2]" src="https://i.ibb.co/6wqGFBY/1702383017308.jpg" alt="Image Description" />
             </div>
 
             <div id="tabs-with-card-3" className="hidden" role="tabpanel" aria-labelledby="tabs-with-card-item-3">
-              <img className="shadow-xl lg:w-[60vw] lg:h-[60vh] shadow-gray-200 rounded-xl dark:shadow-gray-900/[.2]" src="https://i.ibb.co/YPHZ7sr/sharing-food-people-foos-donation-260nw-1763211434.jpg" alt="Image Description" />
+              <img className="shadow-xl lg:w-[60vw] lg:h-[60vh] shadow-gray-200 rounded-xl dark:shadow-gray-900/[.2]" src="https://i.ibb.co/r20qnnH/IMG-20200411-184947.jpg" alt="Image Description" />
             </div>
           </div>
           <div className="hidden absolute top-0 end-0 translate-x-20 md:block lg:translate-x-20">
