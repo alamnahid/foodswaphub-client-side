@@ -8,7 +8,9 @@ import axios from "axios";
 
 
 const FoodDetails = () => {
-
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
     // const singleFoodData = useLoaderData();
     // console.log(singleFoodData)
     const {id} = useParams()
@@ -184,7 +186,7 @@ const FoodDetails = () => {
                                                                     Request For This Food
                                                                 </h3>
                                                                 <p className="text-gray-500">
-                                                                    Share2Savor, Save Food
+                                                                    Food Swap Hub, Save Food
                                                                 </p>
                                                             </div>
 

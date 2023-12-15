@@ -11,8 +11,8 @@ const Footer = () => {
 
     <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6">
       <div className="col-span-full lg:col-span-1">
-        <img className="w-[150px]" src="https://i.ibb.co/0fss9yp/logo-removebg-preview.png" alt="" />
-        <h1 className="text-xl font-bold text-black ml-4">Share2Savor</h1>
+        <img className="w-[150px]" src="https://i.ibb.co/cJYjdFN/Untitled-design-removebg-preview.png" alt="" />
+        <h1 className="text-xl font-bold text-black ml-4">FoodSwapHub</h1>
       </div>
 
       <div className="col-span-1">
@@ -39,7 +39,7 @@ const Footer = () => {
 
       <div className="col-span-2">
         <h4 className="font-semibold text-gray-900">Contact Us</h4>
-        <h4 className="font-medium text-sm mt-3 text-gray-600">Email: support@share2savor.com</h4>
+        <h4 className="font-medium text-sm mt-3 text-gray-600">Email: support@foodswaphub.com</h4>
         <h4 className="font-medium text-sm mt-2 text-gray-600">123 Main Street, Cityville, Country</h4>
 
 
@@ -60,7 +60,7 @@ const Footer = () => {
 
     <div className="mt-5 sm:mt-12 grid gap-y-2 sm:gap-y-0 sm:flex sm:justify-between sm:items-center">
       <div className="flex justify-between items-center">
-        <p className="text-sm text-gray-400">© 2023 share2savor. All rights reserved.</p>
+        <p className="text-sm text-gray-400">© 2023 foodswaphub. All rights reserved.</p>
       </div>
       <div>
         <Link className="inline-flex justify-center items-center gap-x-3.5 w-10 h-10 text-center text-gray-900 hover:bg-white/[.1] rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-offset-gray-900 transition">
