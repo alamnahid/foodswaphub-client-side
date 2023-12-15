@@ -87,6 +87,7 @@ const ManageSignleFood = () => {
             // }
           })
       }
+      console.log(foodData)
 
 
     return (
@@ -95,7 +96,7 @@ const ManageSignleFood = () => {
 
 <div className="md:grid md:grid-cols-1 md:items-center md:gap-12 xl:gap-32">
     <div className="">
-        <img className="rounded-xl w-full lg:w-[20vw]" src={food} alt="Image Description" />
+        <img className="rounded-xl w-full lg:w-[20vw]" src={foodData?.foodImage} alt="Image Description" />
         <h2 className="font-bold text-3xl mt-4 lg:text-4xl text-gray-800 dark:text-gray-200">
                     Food Name: {foodData?.foodName}
                 </h2>

@@ -8,7 +8,7 @@ const AvailableFoodCard = ({food}) => {
     return (
         <div>
 
-<motion.div className="w-full lg:w-[380px] h-[500px] px-8  bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
+<motion.div className="w-full lg:w-[380px] h-[500px] px-8  bg-white border border-[#fda400] rounded-bl-[5rem] rounded-tr-[4rem]  rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
 initial={{ scale: 0 }}
 animate={{ rotate: 360, scale: 1 }}
 transition={{

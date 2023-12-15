@@ -55,3 +55,16 @@ body {
     background-color: rgba(255, 255, 255, 0.2);
     z-index: -1;
   }
+
+  .addfood{
+    background-position: right top;
+    background-size: 800px;
+  }
+
+  .banner-avaialble-food{
+    background-image: url('https://i.ibb.co/f8G6yXY/nahid2.png'), linear-gradient(to top, #fbb53342, #fbb5333a);
+    background-repeat: no-repeat;
+    background-position: top right;
+    background-blend-mode: overlay;
+    
+  }

@@ -1,149 +1,86 @@
-import { Carousel } from 'react-responsive-carousel';
-import 'react-responsive-carousel/lib/styles/carousel.min.css';
+import circle from "../../../assets/logo/circles.png"
+import person1 from "../../../assets/person1.jpg"
+import person2 from "../../../assets/person2.jpg"
+import person3 from "../../../assets/person3.jpg"
+
+
 
 const Review = () => {
-    return (
-        <div className='w-[80vw] mx-auto mt-20'>
-                        <h1 className="mt-20 text-center font-bold text-4xl border-b-2 pb-3 mb-5 w-fit mx-auto rounded-lg border-[#FFB30E]">Our Reviews</h1>
+  return (
+    <div>
+       <section className="w-[80%] mx-auto rounded-xl bg-gradient-to-r from-[#FF8938] to-[#F00] flex flex-col lg:flex-row justify-around lg:h-[75vh] items-center mt-20">
 
-            <Carousel
-      autoPlay
-      showArrows={false}
-      showStatus={false}
-      showThumbs={false}
-      infiniteLoop={true}
-      interval={2000}
-    >
-      <div>
-        
-            <div className="relative overflow-hidden">
-            <div className="max-w-[85rem] px-4 py-12 sm:px-6 lg:px-8 lg:py-16 mx-auto">
+<div className="w-[100%] lg:w-auto p-4 lg:p-0">
+    <h1 className="lg:w-[24.312rem] text-[#F4F4F4] manrope text-3xl md:text-5xl font-extrabold">Meet Our Super Clients</h1>
+    <p className="lg:w-[27.5rem] text-[#F4F4F4] manrope text-base font-semibold my-6">
+        There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. 
+    </p>
+    <button className="bg-white py-[0.88rem] px-[1.75rem] rounded-lg manrope text-xl font-bold text-red-500">
+        Show All
+    </button>
+</div>
 
-                <div aria-hidden="true" className="flex absolute start-0 -z-[1]">
-                <div className="bg-purple-200 opacity-20 blur-3xl w-[1036px] h-[300px] dark:bg-purple-900 dark:opacity-20"></div>
-                </div>
-                <div className="lg:grid lg:grid-cols-6 lg:gap-8 lg:items-center">
-                <div className="hidden lg:block lg:col-span-2">
-                    <img className="w-[350px] h-[300px] rounded-xl" src="https://i.ibb.co/v1hRsBt/RootS4.webp" alt="Image Description"/>
-                </div>
 
-                <div className="lg:col-span-4">
-                    <blockquote>
+<div>
+    <div className="space-y-16 relative w-[100%] lg:w-auto">
 
-                    <p className="text-xl text-left font-medium text-gray-800 lg:text-xl lg:leading-normal dark:text-gray-200">
-                    Share2Savor has been a game-changer for me. I've shared my surplus food, connected with like-minded food enthusiasts, and received delicious meals in times of need. It's a platform that truly brings communities together through the joy of sharing.
-                    </p>
 
-                    <footer className="mt-6">
-                        <div className="flex items-center">
-                        <div className="lg:hidden flex-shrink-0">
-                            <img className="h-12 w-12 rounded-full" src="https://i.ibb.co/v1hRsBt/RootS4.webp" alt="Image Description"/>
-                        </div>
-                        <div className="ms-4 lg:ms-0">
-                            <p className="font-medium text-gray-800 dark:text-gray-200">
-                            Nicole Grazioso
-                            </p>
-                            <p className="text-sm text-gray-600 dark:text-gray-400">
-                            Head of Finance
-                            </p>
-                        </div>
-                        </div>
-                    </footer>
-                    </blockquote>
-                </div>
-                </div>
+        <div className="w-[100%] lg:w-[27.06rem] lg:h-[14.56rem] rounded-lg bg-white relative opacity-40 z-10">
+            <img className="border-4 bg-white border-white rounded-full lg:absolute lg:-left-5 lg:-top-5 w-[5rem] h-[5rem]" src={person1} alt=""/>
+            <p className="lg:w-[21.31rem] ml-[3.12rem] lg:pt-12 manrope text-base text-[#777]">
+                We are providing the best and suitable home insurance services for the people who are interested to treatment
+            </p>
+            <h4 className="ml-[3.12rem] mt-5 text-[#1C1C1C] manrope font-bold">
+                Ilham Yuda
+            </h4>
+            <p className="ml-[3.12rem] text-[#5D5A6F] manrope text-base font-semibold">
+                Businessman
+            </p>
+            <div className="flex justify-end mr-8">
+                <img src={circle} alt=""/>
             </div>
-            </div>
-      </div>
-
-
-      <div>
-      <div className="relative overflow-hidden">
-  <div className="max-w-[85rem] px-4 py-12 sm:px-6 lg:px-8 lg:py-16 mx-auto">
-
-    <div aria-hidden="true" className="flex absolute start-0 -z-[1]">
-      <div className="bg-purple-200 opacity-20 blur-3xl w-[1036px] h-[300px] dark:bg-purple-900 dark:opacity-20"></div>
-    </div>
-    <div className="lg:grid lg:grid-cols-6 lg:gap-8 lg:items-center">
-      <div className="hidden lg:block lg:col-span-2">
-        <img className="w-[350px] h-[300px] rounded-xl" src="https://i.ibb.co/myntzZ9/360-F-243123463-z-Tooub557x-EWABDLk0j-Jkl-Dy-LSGl2jrr.jpg" alt="Image Description"/>
-      </div>
-
-      <div className="lg:col-span-4">
-        <blockquote>
-
-          <p className="text-xl text-left font-medium text-gray-800 lg:text-xl lg:leading-normal dark:text-gray-200">
-          This website makes it so easy to connect with local sharers and request food. I've enjoyed everything from homemade dishes to fresh produce. The only reason I'm not giving it five stars is that I'd love to see even more variety in the available food items.
-          </p>
-
-          <footer className="mt-6">
-            <div className="flex items-center">
-              <div className="lg:hidden flex-shrink-0">
-                <img className="h-12 w-12 rounded-full" src="https://i.ibb.co/myntzZ9/360-F-243123463-z-Tooub557x-EWABDLk0j-Jkl-Dy-LSGl2jrr.jpg" alt="Image Description"/>
-              </div>
-              <div className="ms-4 lg:ms-0">
-                <p className="font-medium text-gray-800 dark:text-gray-200">
-                James L.
-                </p>
-                <p className="text-sm text-gray-600 dark:text-gray-400">
-                  Head of Management
-                </p>
-              </div>
-            </div>
-          </footer>
-        </blockquote>
-      </div>
-    </div>
-  </div>
         </div>
-      </div>
 
 
-      <div>
-      <div className="relative overflow-hidden">
-  <div className="max-w-[85rem] px-4 py-12 sm:px-6 lg:px-8 lg:py-16 mx-auto">
-
-    <div aria-hidden="true" className="flex absolute start-0 -z-[1]">
-      <div className="bg-purple-200 opacity-20 blur-3xl w-[1036px] h-[300px] dark:bg-purple-900 dark:opacity-20"></div>
-    </div>
-    <div className="lg:grid lg:grid-cols-6 lg:gap-8 lg:items-center">
-      <div className="hidden lg:block lg:col-span-2">
-        <img className= " w-[350px] h-[300px] rounded-xl" src="https://i.ibb.co/TmpvHmj/shutterstock-648907024.jpg" alt="Image Description"/>
-      </div>
-
-      <div className="lg:col-span-4">
-        <blockquote>
-
-          <p className="text-xl text-left font-medium text-gray-800 lg:text-xl lg:leading-normal dark:text-gray-200">
-          I can't say enough about how Share2Savor has made a difference in my community. It's a platform that brings compassion and generosity to the forefront. The ability to share and request food has touched many lives. Highly recommended
-          </p>
-
-          <footer className="mt-6">
-            <div className="flex items-center">
-              <div className="lg:hidden flex-shrink-0">
-                <img className="h-12 w-12 rounded-full" src="https://i.ibb.co/TmpvHmj/shutterstock-648907024.jpg" alt="Image Description"/>
-              </div>
-              <div className="ms-4 lg:ms-0">
-                <p className="font-medium text-gray-800 dark:text-gray-200">
-                Maria S.
-                </p>
-                <p className="text-sm text-gray-600 dark:text-gray-400">
-                  Head of IT
-                </p>
-              </div>
+        <div className="w-[100%] lg:w-[27.06rem] h-[14.56rem] rounded-lg bg-white absolute lg:right-[10rem] top-14 z-20">
+            <img className="border-4 bg-white border-white rounded-full lg:absolute -left-5 -top-5 w-[5rem] h-[5rem]" src={person2} alt=""/>
+            <p className="lg:w-[21.31rem] ml-[3.12rem] lg:pt-12 manrope text-base text-[#777]">
+                We are providing the best and suitable home insurance services for the people who are interested to treatment
+            </p>
+            <h4 className="ml-[3.12rem] mt-5 text-[#1C1C1C] manrope font-bold">
+                Ilham Yuda
+            </h4>
+            <p className="ml-[3.12rem] text-[#5D5A6F] manrope text-base font-semibold">
+                Businessman
+            </p>
+            <div className="flex justify-end mr-8">
+                <img src={circle} alt=""/>
             </div>
-          </footer>
-        </blockquote>
-      </div>
+        </div>
+
+
+
+        <div className="w-[100%] lg:w-[27.06rem] h-[14.56rem] rounded-lg bg-white relative opacity-40 z-10">
+            <img className="border-4 bg-white border-white rounded-full lg:absolute -left-5 -top-5 w-[5rem] h-[5rem]" src={person3} alt=""/>
+            <p className="lg:w-[21.31rem] ml-[3.12rem] lg:pt-12 manrope text-base text-[#777]">
+                We are providing the best and suitable home insurance services for the people who are interested to treatment
+            </p>
+            <h4 className="ml-[3.12rem] mt-5 text-[#1C1C1C] manrope font-bold">
+                Ilham Yuda
+            </h4>
+            <p className="ml-[3.12rem] text-[#5D5A6F] manrope text-base font-semibold">
+                Businessman
+            </p>
+            <div className="flex justify-end mr-8">
+                <img src={circle} alt=""/>
+            </div>
+        </div>
     </div>
-  </div>
-        </div>
-      </div>
-
-
-    </Carousel>
-        </div>
-    );
+</div>
+</section>
+      
+    </div>
+  );
 };
 
 export default Review;

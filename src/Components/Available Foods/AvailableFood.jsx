@@ -8,20 +8,16 @@ import Spinner from "../Spinner/Spinner";
 import { Helmet } from "react-helmet-async";
 
 const AvailableFood = () => {
-    // const [foods, setFoods] = useState([])
     const [foodExpireDate, setFoodExpireDate] = useState('')
     const [searchFoodName, setSearchFoodName] = useState('') 
     
 
-    // console.log(searchFoodName.toLowerCase())
-
 
     const axios = useAxios()
-    // console.log(foodExpireDate)
 
     const getFoods = async ()=>{
         const res = await fetch(`http://localhost:5000/getallfood/v1?sortField=expiredate&sortOrder=${foodExpireDate}&foodName=${searchFoodName}`, {credentials: 'include'})
-        // const res = await axios.get('/getallfood/v1')
+   
         return res.json();
     }
     const {data, isLoading, isError, error} = useQuery({
@@ -42,7 +38,7 @@ const AvailableFood = () => {
                 <title>Share2Savor | All Foods</title>
             </Helmet>
 
-        <div className="mt-8">
+        <div className="mt-0">
             <AvailableFoodBanner setFoodExpireDate={setFoodExpireDate}
              setSearchFoodName={setSearchFoodName}
              ></AvailableFoodBanner>
